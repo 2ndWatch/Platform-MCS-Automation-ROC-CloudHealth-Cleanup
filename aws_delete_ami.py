@@ -1,5 +1,8 @@
 import boto3
 
+DRY_RUN = True
+
+
 def describe_ami_snapshots(ami_id, profile_name):
     session = boto3.Session(profile_name=profile_name)
     ec2_client = session.client('ec2')
@@ -11,24 +14,44 @@ def describe_ami_snapshots(ami_id, profile_name):
             snapshots.append(snapshot_id)
     return snapshots
 
+
 def save_snapshots_to_file(snapshot_ids):
     with open('snapshot_ids.txt', 'a') as file:
         for snapshot_id in snapshot_ids:
             file.write(snapshot_id + '\n')
 
+
 def deregister_ami(ami_id, profile_name):
     session = boto3.Session(profile_name=profile_name)
     ec2_client = session.client('ec2')
-    ec2_client.deregister_image(ImageId=ami_id)
+    ec2_client.deregister_image(ImageId=ami_id, DryRun=DRY_RUN)
 
-# Read AMI IDs from file
-with open('ami_ids.txt', 'r') as file:
-    ami_ids = [line.strip() for line in file]
 
-# Specify the AWS CLI profile
-aws_profile = 'your_aws_profile'
+def delete_snapshot(snapshot_id, profile_name):
+    session = boto3.Session(profile_name=profile_name)
+    ec2_client = session.client('ec2')
+    ec2_client.delete_snapshot(ImageId=snapshot_id, DryRun=DRY_RUN)
 
-for ami_id in ami_ids:
-    snapshots = describe_ami_snapshots(ami_id, aws_profile)
-    save_snapshots_to_file(snapshots)
-    deregister_ami(ami_id, aws_profile)
+
+def main():
+    # Read AMI IDs from file
+    with open('cypherworx_amis_to_delete.txt', 'r') as file:
+        ami_ids = [line.strip() for line in file]
+
+    # Specify the AWS CLI profile
+    aws_profile = 'your_aws_profile'
+
+    for ami_id in ami_ids:
+        snapshots = describe_ami_snapshots(ami_id, aws_profile)
+        save_snapshots_to_file(snapshots)
+        deregister_ami(ami_id, aws_profile)
+
+    # Read snapshot IDs from file
+    with open('snapshot_ids.txt', 'r') as file:
+        snapshot_ids = [line.strip() for line in file]
+
+    for snapshot_id in snapshot_ids:
+        delete_snapshot(snapshot_id, aws_profile)
+
+
+main()
