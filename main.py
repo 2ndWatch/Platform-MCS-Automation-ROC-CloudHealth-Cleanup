@@ -1,13 +1,16 @@
 from src.banner import banner
 from datetime import datetime
+import os
 import sys
 import logging
 import json
 import easygui as eg
 
+run_date_time = datetime.now().strftime("%Y%m%d_%H%M%S")
+
 logger = logging.getLogger('2wchclean')
 logging.basicConfig(level=logging.DEBUG,
-                    filename=f'log/2wchclean_{datetime.now().strftime("%Y-%m-%d_%H%M%S")}.log',
+                    filename=f'log/2wchclean_{run_date_time}.log',
                     filemode='a')
 console = logging.StreamHandler(sys.stdout)
 console.setLevel(logging.INFO)
@@ -38,13 +41,21 @@ def parse_selection(choices):
     return keys, names
 
 
+def create_directories(choices):
+    for choice in choices:
+        new_dir = f'{choice}_{run_date_time}'
+        if not os.path.exists(new_dir):
+            os.makedirs(new_dir)
+    return
+
+
 def main(clients):
     print(banner)
     logger.info('\nWelcome to the 2nd Watch Cloud Health resource deletion program.\n')
     # Welcome message box
     welcome = eg.msgbox('Welcome to the 2nd Watch Cloud Health resource deletion program.\n\n'
-                        'Click the <OK> button to proceed.',
-                        '2nd Watch Cloud Health Resource Deleter')
+                        'Click the <Begin> button to proceed.',
+                        '2nd Watch Cloud Health Resource Deleter', ok_button='Begin')
     if welcome is None:  # User closed msgbox
         sys.exit(0)
 
@@ -73,6 +84,10 @@ def main(clients):
         logger.info(f'Client keys: {client_keys}')
         logger.info(f'You are running the program for: {client_names}')
 
+        # Create directories for selected clients
+        print('\nCreating directories for client(s)...')
+        create_directories(client_names)
+
         selected_resources = eg.multchoicebox('Select one or multiple resources by left-clicking.\n\n'
                                               'Click the <Cancel> button to exit.',
                                               'Resource Selection', resource_choices, preselect=None)
@@ -83,20 +98,27 @@ def main(clients):
         logger.info(f'Resource keys: {client_keys}')
         logger.info(f'You are running the program for: {resource_names}')
 
-        eg.msgbox(f'You chose to delete: {resource_names}\n   for {client_names}.\n\n'
-                  f'Click the <OK> button to begin resource deletion.\n\n'
-                  f'You can track deletion progress in the console window.',
-                  'Selection Result')
+        ready = eg.ccbox(f'You chose to delete: {resource_names}\n   for {client_names}.\n\n'
+                         f'IMPORTANT:\n'
+                         f'Please add appropriate text files for each client to their respective directories now. '
+                         f'Please see Confluence documentation for details.\n'
+                         f'Directories for this run will be appended with {run_date_time}.\n\n'
+                         f'You can track deletion progress in the console window.\n\n'
+                         f'Click the <Run> button to begin resource deletion.\n'
+                         f'Click the <Exit> button to exit the program without deleting any resources.',
+                         title='Selection Result', choices=['Run', 'Exit'], cancel_choice='Exit')
+        if not ready:
+            sys.exit(0)
 
         # Actually do all the things here
-        print('\nPretending to do all the things now.')
+        print('\nPretending to do all the things now...')
 
-        logger.info('\nResource deletion is complete. Log files can be found in the <log> directory.')
+        logger.info('\nResource deletion is complete. The log file can be found in the <log> directory.')
 
-        eg.msgbox(f'Resource deletion is complete. Log files can be found in the <log> directory.\n\n'
+        eg.msgbox(f'Resource deletion is complete. The log file can be found in the <log> directory.\n\n'
                   f'Please run the program again if you want to delete more resources.\n\n'
-                  f'Click the <OK> button to exit the program.',
-                  'Resource Deletion Result')
+                  f'Click the <Exit> button to exit the program.',
+                  'Resource Deletion Result', ok_button='Exit')
 
         return
 
