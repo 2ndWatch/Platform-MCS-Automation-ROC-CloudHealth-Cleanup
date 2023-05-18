@@ -13,7 +13,7 @@ console = logging.StreamHandler(sys.stdout)
 console.setLevel(logging.INFO)
 logger.addHandler(console)
 
-DRY_RUN = True
+DRY_RUN = False
 
 
 def describe_ami_snapshots(ami_id, profile_name):
@@ -36,6 +36,7 @@ def save_snapshots_to_file(snapshot_ids):
             file.write(snapshot_id + '\n')
 
 
+# have this stop the entire operation if it errors
 def deregister_ami(ami_id, profile_name):
     session = boto3.Session(profile_name=profile_name, region_name='us-east-1')
     ec2_client = session.client('ec2')
@@ -48,6 +49,7 @@ def deregister_ami(ami_id, profile_name):
     time.sleep(0.1)
 
 
+# have this stop the entire operation if it errors
 def delete_snapshot(snapshot_id, profile_name):
     session = boto3.Session(profile_name=profile_name, region_name='us-east-1')
     ec2_client = session.client('ec2')
@@ -62,7 +64,7 @@ def delete_snapshot(snapshot_id, profile_name):
 
 def main():
     # Read AMI IDs from file
-    with open('amis_test.txt', 'r') as file:
+    with open('cypherworx_amis_to_delete.txt', 'r') as file:
         ami_ids = [line.strip() for line in file]
 
     # Specify the AWS CLI profile
