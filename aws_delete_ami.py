@@ -1,6 +1,17 @@
 import boto3
 import botocore.exceptions
 import time
+from datetime import datetime
+import sys
+import logging
+
+logger = logging.getLogger('2wchclean')
+logging.basicConfig(level=logging.DEBUG,
+                    filename=f'log/2wchclean_{datetime.now().strftime("%Y-%m-%d_%H%M%S")}.log',
+                    filemode='a')
+console = logging.StreamHandler(sys.stdout)
+console.setLevel(logging.INFO)
+logger.addHandler(console)
 
 DRY_RUN = True
 
@@ -14,7 +25,7 @@ def describe_ami_snapshots(ami_id, profile_name):
         if 'Ebs' in block_device:
             snapshot_id = block_device['Ebs']['SnapshotId']
             snapshots.append(snapshot_id)
-            print(f'  {snapshot_id} from {ami_id}')
+            logger.info(f'  {snapshot_id} from {ami_id}')
     time.sleep(0.1)
     return snapshots
 
@@ -28,24 +39,24 @@ def save_snapshots_to_file(snapshot_ids):
 def deregister_ami(ami_id, profile_name):
     session = boto3.Session(profile_name=profile_name, region_name='us-east-1')
     ec2_client = session.client('ec2')
-    print(f'   Trying deregistration of {ami_id}...')
+    logger.info(f'   Trying deregistration of {ami_id}...')
     try:
         response = ec2_client.deregister_image(ImageId=ami_id, DryRun=DRY_RUN)
-        print(response)
+        logger.info(response)
     except botocore.exceptions.ClientError as e:
-        print(f'      {e}')
+        logger.info(f'      {e}')
     time.sleep(0.1)
 
 
 def delete_snapshot(snapshot_id, profile_name):
     session = boto3.Session(profile_name=profile_name, region_name='us-east-1')
     ec2_client = session.client('ec2')
-    print(f'   Trying deletion of {snapshot_id}...')
+    logger.info(f'   Trying deletion of {snapshot_id}...')
     try:
         response = ec2_client.delete_snapshot(SnapshotId=snapshot_id, DryRun=DRY_RUN)
-        print(response)
+        logger.info(response)
     except botocore.exceptions.ClientError as e:
-        print(f'      {e}')
+        logger.info(f'      {e}')
     time.sleep(0.1)
 
 
@@ -57,12 +68,12 @@ def main():
     # Specify the AWS CLI profile
     aws_profile = 'cypherworxmain'
 
-    print('Collection snapshot IDs and deregistering AMIs...')
+    logger.info('Collection snapshot IDs and deregistering AMIs...')
 
     for ami_id in ami_ids:
-        print(f'\nSearching for {ami_id}...')
+        logger.info(f'\nSearching for {ami_id}...')
         snapshots = describe_ami_snapshots(ami_id, aws_profile)
-        print(f'      Snapshot list: {snapshots}')
+        logger.info(f'      Snapshot list: {snapshots}')
         save_snapshots_to_file(snapshots)
         deregister_ami(ami_id, aws_profile)
 
@@ -71,7 +82,7 @@ def main():
         snapshot_ids = [line.strip() for line in file]
 
     for snapshot_id in snapshot_ids:
-        print(f'\nSearching for {snapshot_id}...')
+        logger.info(f'\nSearching for {snapshot_id}...')
         delete_snapshot(snapshot_id, aws_profile)
 
 
