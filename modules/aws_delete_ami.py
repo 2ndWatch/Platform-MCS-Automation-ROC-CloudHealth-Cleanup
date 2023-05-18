@@ -26,7 +26,7 @@ def describe_ami_snapshots(ami_id, profile_name):
             snapshot_id = block_device['Ebs']['SnapshotId']
             snapshots.append(snapshot_id)
             logger.info(f'  {snapshot_id} from {ami_id}')
-    time.sleep(0.1)
+    # time.sleep(0.1)
     return snapshots
 
 
@@ -46,7 +46,7 @@ def deregister_ami(ami_id, profile_name):
         logger.info(response)
     except botocore.exceptions.ClientError as e:
         logger.info(f'      {e}')
-    time.sleep(0.1)
+    # time.sleep(0.1)
 
 
 # have this stop the entire operation if it errors
@@ -59,7 +59,7 @@ def delete_snapshot(snapshot_id, profile_name):
         logger.info(response)
     except botocore.exceptions.ClientError as e:
         logger.info(f'      {e}')
-    time.sleep(0.1)
+    # time.sleep(0.1)
 
 
 def main():
