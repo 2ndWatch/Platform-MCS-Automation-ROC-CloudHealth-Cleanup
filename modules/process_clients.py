@@ -5,7 +5,6 @@ import modules.delete_resources as dr
 
 def process_clients(clients_dict, client_keys, resource_keys, logger):
     for key in client_keys:
-        client = clients_dict[key]['name']
 
         for profile in clients_dict[key]['profiles']:
             profile_name = profile['profile_name']
@@ -18,7 +17,9 @@ def process_clients(clients_dict, client_keys, resource_keys, logger):
             if logged_in:
                 logger.info(f'You are logged in to {profile["profile_name"]}.')
 
-            for region in profile['region']:
-                dr.delete_resources(profile, region, resource_keys, logger)
+                for region in profile['region']:
+                    dr.delete_resources(profile, region, resource_keys, logger)
+            else:
+                return 1
 
-    return
+    return 0

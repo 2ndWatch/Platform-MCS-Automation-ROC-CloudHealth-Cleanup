@@ -111,16 +111,22 @@ def main(clients):
         if not ready:
             sys.exit(0)
 
-        # Actually do all the things here
-        print('\nPretending to do all the things now...')
-        pc.process_clients(clients_dict, client_keys, resource_keys, logger)
+        process_code = pc.process_clients(clients_dict, client_keys, resource_keys, logger)
 
-        logger.info('\nResource deletion is complete. The log file can be found in the <log> directory.')
+        if process_code != 0:
+            logger.info('\nLogin failed. The program has not deleted any resources.')
 
-        eg.msgbox(f'Resource deletion is complete. The log file can be found in the <log> directory.\n\n'
-                  f'Please run the program again if you want to delete more resources.\n\n'
-                  f'Click the <Exit> button to exit the program.',
-                  'Resource Deletion Result', ok_button='Exit')
+            eg.msgbox(f'Login failed. The program has not deleted any resources.\n\n'
+                      f'Please report the failure and submit the log file from this run attempt.\n\n'
+                      f'Click the <Exit> button to exit the program.',
+                      'Resource Deletion Result', ok_button='Exit')
+        else:
+            logger.info('\nResource deletion is complete. The log file can be found in the <log> directory.')
+
+            eg.msgbox(f'Resource deletion is complete. The log file can be found in the <log> directory.\n\n'
+                      f'Please run the program again if you want to delete more resources.\n\n'
+                      f'Click the <Exit> button to exit the program.',
+                      'Resource Deletion Result', ok_button='Exit')
 
         return
 
