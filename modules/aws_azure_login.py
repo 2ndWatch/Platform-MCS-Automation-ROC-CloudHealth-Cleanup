@@ -1,4 +1,3 @@
-import os
 import subprocess
 
 
@@ -9,7 +8,6 @@ def azure_login(profile_name, logger):
     login = subprocess.Popen(['aws-azure-login', '--profile', f'{profile_name}', '--mode', 'gui'], shell=True,
                              stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     output, errors = login.communicate()
-    # change to debug level when program works
     logger.debug(output)
     logger.debug(errors)
     login.wait()
