@@ -1,3 +1,4 @@
+import modules.process_clients as pc
 from src.banner import banner
 from datetime import datetime
 import os
@@ -21,7 +22,7 @@ with open('src/clients.txt') as cl:
 clients_dict = json.loads(cl_txt)
 
 # Set to True for unit tests
-TESTING = False
+# TESTING = False
 
 # Set to True to validate access prior to deleting resources
 DRY_RUN = False
@@ -112,6 +113,7 @@ def main(clients):
 
         # Actually do all the things here
         print('\nPretending to do all the things now...')
+        pc.process_clients(clients_dict, client_keys, resource_keys, logger)
 
         logger.info('\nResource deletion is complete. The log file can be found in the <log> directory.')
 
