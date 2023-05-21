@@ -1,7 +1,9 @@
 import boto3
+from modules.delete_old_amis import delete_amis
 
 
-def delete_resources(profile, region_name, resource_keys, logger):
+# TODO: figure out how this will work when a client has multiple accounts...
+def delete_resources(profile, region_name, resource_keys, dry_run, logger):
     account_name = profile['account_name']
     # account_number = profile['account_number']
 
@@ -16,6 +18,7 @@ def delete_resources(profile, region_name, resource_keys, logger):
             logger.info('\nDeleting unattached elastic IPS...')
         if key == '2':
             logger.info('\nDeleting old EC2 images...')
+            delete_amis(ec2, dry_run, logger)
         if key == '3':
             logger.info('\nDeleting old EBS snapshots...')
         if key == '4':

@@ -21,10 +21,7 @@ with open('src/clients.txt') as cl:
     cl_txt = cl.read()
 clients_dict = json.loads(cl_txt)
 
-# Set to True for unit tests
-# TESTING = False
-
-# Set to True to validate access prior to deleting resources
+# TODO: make a ccbox for dry_run
 DRY_RUN = False
 
 
@@ -99,7 +96,18 @@ def main(clients):
         logger.info(f'Resource keys: {client_keys}')
         logger.info(f'You are running the program for: {resource_names}')
 
-        ready = eg.ccbox(f'You chose to delete: {resource_names}\n   for {client_names}.\n\n'
+        # Returns True for Dry Run and False for Delete Stuff
+        dry_run = eg.ccbox('If you are TESTING, click the <Dry Run> button.\n\n'
+                           'If you intend to actually delete resources, click the <Delete Stuff> button.\n\n'
+                           'Your selection will show in the next window. If you click the wrong button by mistake, you '
+                           'will be able to exit the program and try again.',
+                           title='Dry Run/Delete Stuff', choices=['Dry Run', 'Delete Stuff'], cancel_choice='Dry Run')
+
+        logger.info(f'\nDry run is set to {dry_run}.')
+
+        ready = eg.ccbox(f'You chose: {resource_names}\n   for {client_names}.\n\n'
+                         f'This is a DRY RUN: {dry_run}. Make sure this is what you intend. If not, exit the program '
+                         f'and start over.'
                          f'IMPORTANT:\n'
                          f'Please add appropriate text files for each client to their respective directories now. '
                          f'Please see Confluence documentation for details.\n'
@@ -111,7 +119,7 @@ def main(clients):
         if not ready:
             sys.exit(0)
 
-        process_code = pc.process_clients(clients_dict, client_keys, resource_keys, logger)
+        process_code = pc.process_clients(clients_dict, client_keys, resource_keys, dry_run, logger)
 
         if process_code != 0:
             logger.info('\nLogin failed. The program has not deleted any resources.')

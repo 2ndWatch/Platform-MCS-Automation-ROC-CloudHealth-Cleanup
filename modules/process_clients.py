@@ -3,7 +3,7 @@ import modules.login_config as lcfg
 import modules.delete_resources as dr
 
 
-def process_clients(clients_dict, client_keys, resource_keys, logger):
+def process_clients(clients_dict, client_keys, resource_keys, dry_run, logger):
     for key in client_keys:
 
         for profile in clients_dict[key]['profiles']:
@@ -18,7 +18,7 @@ def process_clients(clients_dict, client_keys, resource_keys, logger):
                 logger.info(f'You are logged in to {profile["profile_name"]}.')
 
                 for region in profile['region']:
-                    dr.delete_resources(profile, region, resource_keys, logger)
+                    dr.delete_resources(profile, region, resource_keys, dry_run, logger)
             else:
                 return 1
 
