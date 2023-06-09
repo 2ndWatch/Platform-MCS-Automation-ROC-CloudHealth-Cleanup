@@ -8,6 +8,12 @@ def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_
     accounts_not_logged_in = 0
     accounts_not_logged_in_list = []
 
+    ips = 0
+    images = 0
+    snapshots = 0
+    volumes = 0
+    rds = 0
+
     for key in client_keys:
         client_name = clients_dict[key]['name']
 
@@ -27,7 +33,14 @@ def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_
                 logger.info(f'You are logged in to {profile["profile_name"]}.')
 
                 for region in profile['region']:
-                    dr.delete_resources(profile, client_name, region, resource_keys, dry_run, run_date_time, logger)
+                    ips_region, images_region, snapshots_region, \
+                        volumes_region, rds_region = dr.delete_resources(profile, client_name, region, resource_keys,
+                                                                         dry_run, run_date_time, logger)
+                    ips += ips_region
+                    images += images_region
+                    snapshots += snapshots_region
+                    volumes += volumes_region
+                    rds += rds_region
             else:
                 logger.info(f'You were not logged in, skipping {profile["profile_name"]}.')
                 accounts_not_logged_in += 1
@@ -42,4 +55,4 @@ def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_
         # Return if no accounts were accessed
         return 1
     else:
-        return accounts_not_logged_in_list
+        return accounts_not_logged_in_list, ips, images, snapshots, volumes, rds

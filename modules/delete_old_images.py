@@ -28,26 +28,39 @@ def describe_ami_snapshots(ec2_client, client_name, image_id, run_date_time, log
 
 def deregister_ami(ec2_client, image_id, dry_run, logger):
     logger.info(f'   Trying deregistration of {image_id}...')
+    deregistered = False
     try:
         response = ec2_client.deregister_image(ImageId=image_id, DryRun=dry_run)
         logger.info(f'      {response}')
+        deregistered = True
     except botocore.exceptions.ClientError as e:
         logger.info(f'      {e}')
+        if 'DryRunOperation' in str(e):
+            deregistered = True
+
+    return deregistered
 
 
 def delete_snapshot(ec2_client, snapshot_id, dry_run, logger):
     logger.info(f'   Trying deletion of {snapshot_id}...')
+    deleted = False
     try:
         response = ec2_client.delete_snapshot(SnapshotId=snapshot_id, DryRun=dry_run)
         logger.info(f'      {response}')
+        deleted = True
     except botocore.exceptions.ClientError as e:
         logger.info(f'      {e}')
+        if 'DryRunOperation' in str(e):
+            deleted = True
+
+    return deleted
 
 
 def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_time, logger):
     old_images_file_name = f'{client_name} old images.txt'
     image_snaps_file_name = f'{client_name} old image snaps.txt'
     images_deregistered = 0
+    snapshots_deleted = 0
 
     # Delete image snapshot file if it exists, to avoid trying to delete snapshots in every region/account
     try:
@@ -62,7 +75,7 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
             logger.info(f'Locating {len(image_ids)} images...')
     except FileNotFoundError:
         logger.info(f'File not found: {old_images_file_name}. Skipping image deregistration in {region_name}.')
-        return
+        return images_deregistered, snapshots_deleted
 
     original_image_ids_length = len(image_ids)
     amis_to_deregister = []
@@ -76,9 +89,10 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
     if amis_to_deregister:
         logger.info(f'\nDeregistering {len(amis_to_deregister)} images...')
         for image_id in amis_to_deregister:
-            deregister_ami(ec2_client, image_id, dry_run, logger)
-            images_deregistered += 1
-            image_ids.remove(image_id)
+            deregistered = deregister_ami(ec2_client, image_id, dry_run, logger)
+            if deregistered:
+                images_deregistered += 1
+                image_ids.remove(image_id)
 
     logger.info(f'\nNumber of images deregistered: {images_deregistered}')
     logger.info(f'Number of remaining images: {len(image_ids)}')
@@ -101,15 +115,19 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
             all_snapshot_ids = [line.strip() for line in file]
     except FileNotFoundError:
         logger.info(f'\nAuto-generated file not found: {image_snaps_file_name}. No snapshots to delete.')
-        return
+        return images_deregistered, snapshots_deleted
 
     # If there are snapshot IDs, delete the snapshots
     if all_snapshot_ids:
         logger.info(f'\nDeleting {len(all_snapshot_ids)} associated snapshots...')
 
         for snapshot_id in all_snapshot_ids:
-            delete_snapshot(ec2_client, snapshot_id, dry_run, logger)
+            deleted = delete_snapshot(ec2_client, snapshot_id, dry_run, logger)
+            if deleted:
+                snapshots_deleted += 1
     else:
         logger.info('\nEmpty snapshot list. No snapshots to delete.')
 
-    return
+    logger.info(f'\nNumber of snapshots deleted: {snapshots_deleted}')
+
+    return images_deregistered, snapshots_deleted

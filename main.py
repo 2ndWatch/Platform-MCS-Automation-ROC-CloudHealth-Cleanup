@@ -118,26 +118,42 @@ def main(clients):
         if not ready:
             sys.exit(0)
 
-        process_result = pc.process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_time, logger)
+        process_result, ips, images, snapshots, volumes, rds = pc.process_clients(clients_dict, client_keys,
+                                                                                  resource_keys, dry_run,
+                                                                                  run_date_time, logger)
 
         if process_result == 1:
 
             # No logins were successful
-            logger.info('\nNo successful logins recorded. The program has not deleted any resources.')
+            logger.info('\nNo successful logins recorded. No resources were deleted.')
 
-            eg.msgbox(f'No successful logins recorded. The program has not deleted any resources.\n\n'
+            eg.msgbox(f'No successful logins recorded. No resources were deleted.\n\n'
                       f'Please submit the log file from this run attempt.\n\n'
                       f'Click the <Exit> button to exit the program.',
                       'Resource Deletion Result', ok_button='Exit')
         else:
 
             # At least one login was successful; displays any logins that did not succeed
-            logger.info(f'\nResource deletion is complete.'
-                        f'\nAccounts not logged into: {process_result}'
+            logger.info(f'\nResource deletion is complete. If this was a dry run --> [{dry_run}] <-- then no resources '
+                        f'were actually deleted.'
+                        f'\n\nSummary:'
+                        f'\nIPs deleted: {ips}'
+                        f'\nImages deregistered: {images}'
+                        f'\nEBS snapshots deleted: {snapshots}'
+                        f'\nVolumes deleted: {volumes}'
+                        f'\nRDS snapshots deleted: {rds}'
+                        f'\n\nAccounts not logged into: {process_result}'
                         f'\n\nThe log file can be found in the <log> directory.')
 
-            eg.msgbox(f'Resource deletion is complete.'
-                      f'\nAccounts not logged into: {process_result}'
+            eg.msgbox(f'Resource deletion is complete. If this was a dry run --> [{dry_run}] <-- then no resources were'
+                      f'actually deleted.'
+                      f'\n\nSummary:'
+                      f'\nIPs deleted: {ips}'
+                      f'\nImages deregistered: {images}'
+                      f'\nEBS snapshots deleted: {snapshots}'
+                      f'\nVolumes deleted: {volumes}'
+                      f'\nRDS snapshots deleted: {rds}'
+                      f'\n\nAccounts not logged into: {process_result}'
                       f'\n\nThe log file can be found in the <log> directory. Please run the program again if you want '
                       f'to delete more resources.'
                       f'\n\nClick the <Exit> button to exit the program.',
