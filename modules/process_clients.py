@@ -3,23 +3,43 @@ import modules.login_config as lcfg
 import modules.delete_resources as dr
 
 
-def process_clients(clients_dict, client_keys, resource_keys, dry_run, logger):
+def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_time, logger):
+    accounts_logged_in = 0
+    accounts_not_logged_in = 0
+    accounts_not_logged_in_list = []
+
     for key in client_keys:
+        client_name = clients_dict[key]['name']
 
         for profile in clients_dict[key]['profiles']:
             profile_name = profile['profile_name']
+
+            # Set certain aws-azure-login environmental variables
             lcfg.set_login_credentials(profile, profile_name)
 
-            logger.info(f'\nLogging in to {profile_name}. Enter your Azure credentials in '
-                        f'the popup window.')
+            logger.info(f'\nLogging in to {profile_name}. Enter your Azure credentials in the popup window.')
+
+            # Log into an account (a 'profile') using aws-azure-login
             logged_in = aws.azure_login(profile_name, logger)
 
+            # Delete resources if successfully logged in; otherwise, skip the profile
             if logged_in:
                 logger.info(f'You are logged in to {profile["profile_name"]}.')
 
                 for region in profile['region']:
-                    dr.delete_resources(profile, region, resource_keys, dry_run, logger)
+                    dr.delete_resources(profile, client_name, region, resource_keys, dry_run, run_date_time, logger)
             else:
-                return 1
+                logger.info(f'You were not logged in, skipping {profile["profile_name"]}.')
+                accounts_not_logged_in += 1
+                accounts_not_logged_in_list.append(profile['profile_name'])
+                continue
 
-    return 0
+    logger.debug(f'Did not log into: {accounts_not_logged_in_list}')
+
+    if accounts_not_logged_in > 0 and accounts_logged_in == 0:
+        logger.debug('\nNo successful logins recorded. No reports will be generated.')
+
+        # Return if no accounts were accessed
+        return 1
+    else:
+        return accounts_not_logged_in_list

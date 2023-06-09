@@ -6,7 +6,7 @@
                 "account_name": "CKE Restaurants MPA/Prod",
                 "profile_name": "ckempa",
                 "account_number": "512176277481",
-                "region": ["us-east-1", "us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "7b0eca21-b784-4d1c-9ca3-ce1300049e17"
             }
@@ -19,7 +19,7 @@
                 "account_name": "CypherWorx Main Account",
                 "profile_name": "cypherworxmain",
                 "account_number": "372356060901",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "26ffb536-3d6c-4005-89a8-cdb4bf43940e"
             }
@@ -32,7 +32,7 @@
                 "account_name": "Edmund Optics Main account",
                 "profile_name": "eomain",
                 "account_number": "269180092429",
-                "region": ["us-east-1", "us-east-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "d054ef79-3919-490e-9eb2-ff2174149e7d"
             }
@@ -45,7 +45,7 @@
                 "account_name": "internal",
                 "profile_name": "uiwombat",
                 "account_number": "010949642540",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "75572fc2-2e74-4169-a543-73ad6aac0cae"
             },
@@ -53,7 +53,7 @@
                 "account_name": "financial",
                 "profile_name": "uifinancial",
                 "account_number": "124778240328",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "51a9fd48-6595-4799-b0c4-b6ffd229acb3"
             },
@@ -61,7 +61,7 @@
                 "account_name": "Wapa",
                 "profile_name": "uiwapa",
                 "account_number": "409793285578",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "ab1b1b5c-9758-4444-87be-cbdf00485c73"
             },
@@ -69,7 +69,7 @@
                 "account_name": "customer-ElPaso",
                 "profile_name": "uielpaso",
                 "account_number": "591720369555",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "d81a94b1-3be9-478d-a196-2902e161e604"
             },
@@ -77,7 +77,7 @@
                 "account_name": "librarian",
                 "profile_name": "uilibrarian",
                 "account_number": "596683006098",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "6c269b98-74c1-4490-8724-bfb06d4ab8b9"
             },
@@ -85,7 +85,7 @@
                 "account_name": "customers",
                 "profile_name": "uicustomers",
                 "account_number": "640494380191",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "b3c35cad-347b-40c5-962d-8591cf1d5f7b"
             },
@@ -93,7 +93,7 @@
                 "account_name": "customer-AustinEnergy",
                 "profile_name": "uiaustin",
                 "account_number": "670035103958",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "d055151a-8978-4fbb-b6ca-9abd3a77472b"
             },
@@ -101,7 +101,7 @@
                 "account_name": "shared-services",
                 "profile_name": "uishared",
                 "account_number": "722963886105",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "70db8f1d-1e7b-4cb4-8f2f-f217de7f2b51"
             },
@@ -109,7 +109,7 @@
                 "account_name": "customer-bhe",
                 "profile_name": "uibhe",
                 "account_number": "378850973661",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "b40ef666-4332-4ae5-8526-634211dd753a"
             },
@@ -117,7 +117,7 @@
                 "account_name": "customer-CenterPointEnergy",
                 "profile_name": "uicenterpoint",
                 "account_number": "631174679383",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "debcf93b-4788-4a5c-a2f2-37f618752ea7"
             },
@@ -125,7 +125,7 @@
                 "account_name": "customer-ConsumersEnergy",
                 "profile_name": "uiconsumers",
                 "account_number": "003837565195",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "b079ddf2-6e3f-490e-9f68-4ab1bae74f22"
             },
@@ -133,7 +133,7 @@
                 "account_name": "customer-otp",
                 "profile_name": "uiotp",
                 "account_number": "161742078190",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "2bf34299-2094-4de2-99da-c395b892d603"
             },
@@ -141,7 +141,7 @@
                 "account_name": "customer-pge",
                 "profile_name": "uipge",
                 "account_number": "227853323018",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "e48e648f-72f0-4742-b999-3893c6388ace"
             },
@@ -149,7 +149,7 @@
                 "account_name": "customer-pseg",
                 "profile_name": "uipseg",
                 "account_number": "467189845498",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "4070eb9c-a2c4-4b86-93bb-4082d6a0d367"
             },
@@ -157,7 +157,7 @@
                 "account_name": "UII_Test_Account",
                 "profile_name": "uitest",
                 "account_number": "288453765162",
-                "region": ["us-east-2", "us-west-2"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
                 "app_id_uri": "aab084b0-9c8d-4369-8d95-a3af31bfab81"
             }
@@ -170,7 +170,7 @@
                 "account_name": "Dev",
                 "profile_name": "vnsdev",
                 "account_number": "394721647414",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "aceaf30e-b195-4e20-bae3-bd8e3b91c85d"
             },
@@ -178,24 +178,15 @@
                 "account_name": "MSO",
                 "profile_name": "vnsmso",
                 "account_number": "765697202555",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "b070b5e4-62e6-4d57-bd5e-5a1e8941217d"
-            },
-            {
-                "account_name": "MSO-Test",
-                "profile_name": "vnsmsotest",
-                "account_number": "034571914901",
-                "region": ["us-east-1"],
-                "tenant_id": "",
-                "app_id_uri": "",
-                "availability": "no info/access"
             },
             {
                 "account_name": "Production",
                 "profile_name": "vnsprod",
                 "account_number": "387721966484",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "7d0b99c2-62d9-4194-bee2-c9bbd6e527d6"
             },
@@ -203,7 +194,7 @@
                 "account_name": "Regulated",
                 "profile_name": "vnsreg",
                 "account_number": "059317571093",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "91478152-34df-41ec-8394-669603e2cc46"
             },
@@ -211,7 +202,7 @@
                 "account_name": "Sandbox",
                 "profile_name": "vnssand",
                 "account_number": "173082462933",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "563af4f2-396e-4276-9cd1-7c5894377e9a"
             },
@@ -219,7 +210,7 @@
                 "account_name": "Shared Services",
                 "profile_name": "vnsshared",
                 "account_number": "330383299209",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "d04b1a9f-a5a1-4bf3-a671-f4335cf804e9"
             },
@@ -227,7 +218,7 @@
                 "account_name": "Test",
                 "profile_name": "vnstest",
                 "account_number": "498214724335",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "f5e1cf98-63f7-47fe-8611-e6de77162a81"
             },
@@ -235,7 +226,7 @@
                 "account_name": "Transit",
                 "profile_name": "vnstransit",
                 "account_number": "643066205191",
-                "region": ["us-east-1"],
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
                 "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
                 "app_id_uri": "63935f3f-2d93-43d7-bc65-66be67ce48cb"
             }

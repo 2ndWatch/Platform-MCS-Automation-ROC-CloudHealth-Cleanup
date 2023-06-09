@@ -21,12 +21,9 @@ with open('src/clients.txt') as cl:
     cl_txt = cl.read()
 clients_dict = json.loads(cl_txt)
 
-# TODO: make a ccbox for dry_run
-DRY_RUN = False
-
 
 def parse_selection(choices):
-    # Create list of keys and names from clint or resource selection
+    # Create list of keys and names from client or resource selection
     keys = [choice.split(' ')[0] for choice in choices]
     names = []
     for choice in choices:
@@ -102,16 +99,18 @@ def main(clients):
                            'Your selection will show in the next window. If you click the wrong button by mistake, you '
                            'will be able to exit the program and try again.',
                            title='Dry Run/Delete Stuff', choices=['Dry Run', 'Delete Stuff'], cancel_choice='Dry Run')
+        if not dry_run:
+            sys.exit(0)
 
         logger.info(f'\nDry run is set to {dry_run}.')
 
         ready = eg.ccbox(f'You chose: {resource_names}\n   for {client_names}.\n\n'
-                         f'This is a DRY RUN: {dry_run}. Make sure this is what you intend. If not, exit the program '
-                         f'and start over.'
-                         f'IMPORTANT:\n'
-                         f'Please add appropriate text files for each client to their respective directories now. '
+                         f'This is a DRY RUN: {dry_run}.'
+                         f'\nMake sure this is what you intend. If not, exit the program and start over.'
+                         f'\n\nIMPORTANT:'
+                         f'\nPlease add resource text files for each client to their respective directories now. '
                          f'Please see Confluence documentation for details.\n'
-                         f'Directories for this run will be appended with {run_date_time}.\n\n'
+                         f'Client directories for this run will be appended with {run_date_time}.\n\n'
                          f'You can track deletion progress in the console window.\n\n'
                          f'Click the <Run> button to begin resource deletion.\n'
                          f'Click the <Exit> button to exit the program without deleting any resources.',
@@ -119,21 +118,29 @@ def main(clients):
         if not ready:
             sys.exit(0)
 
-        process_code = pc.process_clients(clients_dict, client_keys, resource_keys, dry_run, logger)
+        process_result = pc.process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_time, logger)
 
-        if process_code != 0:
-            logger.info('\nLogin failed. The program has not deleted any resources.')
+        if process_result == 1:
 
-            eg.msgbox(f'Login failed. The program has not deleted any resources.\n\n'
-                      f'Please report the failure and submit the log file from this run attempt.\n\n'
+            # No logins were successful
+            logger.info('\nNo successful logins recorded. The program has not deleted any resources.')
+
+            eg.msgbox(f'No successful logins recorded. The program has not deleted any resources.\n\n'
+                      f'Please submit the log file from this run attempt.\n\n'
                       f'Click the <Exit> button to exit the program.',
                       'Resource Deletion Result', ok_button='Exit')
         else:
-            logger.info('\nResource deletion is complete. The log file can be found in the <log> directory.')
 
-            eg.msgbox(f'Resource deletion is complete. The log file can be found in the <log> directory.\n\n'
-                      f'Please run the program again if you want to delete more resources.\n\n'
-                      f'Click the <Exit> button to exit the program.',
+            # At least one login was successful; displays any logins that did not succeed
+            logger.info(f'\nResource deletion is complete.'
+                        f'\nAccounts not logged into: {process_result}'
+                        f'\n\nThe log file can be found in the <log> directory.')
+
+            eg.msgbox(f'Resource deletion is complete.'
+                      f'\nAccounts not logged into: {process_result}'
+                      f'\n\nThe log file can be found in the <log> directory. Please run the program again if you want '
+                      f'to delete more resources.'
+                      f'\n\nClick the <Exit> button to exit the program.',
                       'Resource Deletion Result', ok_button='Exit')
 
         return

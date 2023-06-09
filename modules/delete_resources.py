@@ -1,9 +1,8 @@
 import boto3
-from modules.delete_old_amis import delete_amis
+import modules.delete_old_images as doi
 
 
-# TODO: figure out how this will work when a client has multiple accounts...
-def delete_resources(profile, region_name, resource_keys, dry_run, logger):
+def delete_resources(profile, client_name, region_name, resource_keys, dry_run, run_date_time, logger):
     account_name = profile['account_name']
     # account_number = profile['account_number']
 
@@ -11,21 +10,27 @@ def delete_resources(profile, region_name, resource_keys, dry_run, logger):
     ec2 = session.client('ec2')
     rds = session.client('rds')
 
-    logger.info(f'\nStarting resource deletion for {account_name} in {region_name}.')
+    logger.info(f'\n** Starting resource deletion for {account_name} in {region_name}. **')
 
     for key in resource_keys:
         if key == '1':
-            logger.info('\nDeleting unattached elastic IPS...')
+            logger.info('\nUnattached elastic IPS:')
+            logger.info('   No action.')
+        # TODO: read file here
         if key == '2':
-            logger.info('\nDeleting old EC2 images...')
-            delete_amis(ec2, dry_run, logger)
+            logger.info('\nOld EC2 images:\n--------------')
+            doi.delete_old_images(ec2, client_name, region_name, dry_run, run_date_time, logger)
         if key == '3':
-            logger.info('\nDeleting old EBS snapshots...')
+            logger.info('\nOld EBS snapshots:')
+            logger.info('   No action.')
         if key == '4':
-            logger.info('\nDeleting unused EC2 images...')
+            logger.info('\nUnused EC2 images:')
+            logger.info('   No action.')
         if key == '5':
-            logger.info('\nDeleting unattached EBS volumes...')
+            logger.info('\nUnattached EBS volumes:')
+            logger.info('   No action.')
         if key == '6':
-            logger.info('\nDeleting old RDS/Aurora snapshots...')
+            logger.info('\nOld RDS/Aurora snapshots:')
+            logger.info('   No action.')
 
     return
