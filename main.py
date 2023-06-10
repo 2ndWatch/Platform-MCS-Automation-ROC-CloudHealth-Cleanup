@@ -100,7 +100,7 @@ def main(clients):
 
         # Returns True for Dry Run and False for Delete Stuff
         dry_run = eg.ccbox('! ! !   IMPORTANT   ! ! !'
-                           'If you are TESTING, click the <Dry Run> button.'
+                           '\n\nIf you are TESTING, click the <Dry Run> button.'
                            '\n\nIf you intend to actually delete resources, click the <Delete Stuff> button.'
                            '\n\nYour selection will show in the next window. If you click the wrong button by mistake, '
                            'you will be able to exit the program and try again.',
@@ -113,7 +113,6 @@ def main(clients):
         ready = eg.ccbox(f'You chose: {resource_names}\n   for {client_names}.'
                          f'\n\nThis is a DRY RUN: {dry_run}.'
                          f'\nMake sure this is what you intend. If not, exit the program and start over.'
-                         f'\n\nClient directories for this run will be appended with {run_date_time}.'
                          f'\n\nYou can track deletion progress in the console window.'
                          f'\n\nClick the <Run> button to begin resource deletion.'
                          f'\nClick the <Exit> button to exit the program without deleting any resources.',
@@ -159,8 +158,7 @@ def main(clients):
                       f'\nRDS snapshots deleted: {rds}'
                       f'\n\nAccounts not logged into: {process_result}'
                       f'\n\nClient directories for this run are appended with {run_date_time}.'
-                      f'\n\nThe log file can be found in the <log> directory. Please run the program again if you want '
-                      f'to delete more resources.'
+                      f'\n\nThe log file can be found in the <log> directory.'
                       f'\n\nClick the <Exit> button to exit the program.',
                       'Resource Deletion Result', ok_button='Exit')
 

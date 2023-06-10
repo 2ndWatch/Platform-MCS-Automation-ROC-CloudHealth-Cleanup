@@ -18,7 +18,7 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
     for key in client_keys:
         client_name = clients_dict[key]['name']
 
-        reg.get_resource_ids_list(client_name, resource_keys, resources_dict, run_date_time, logger)
+        reg.get_resource_ids(client_name, resource_keys, resources_dict, run_date_time, logger)
 
         for profile in clients_dict[key]['profiles']:
             profile_name = profile['profile_name']
