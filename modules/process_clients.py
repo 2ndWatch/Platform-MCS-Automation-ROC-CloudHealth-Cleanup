@@ -1,9 +1,10 @@
 import modules.aws_azure_login as aws
 import modules.login_config as lcfg
 import modules.delete_resources as dr
+import modules.resource_entry_gui as reg
 
 
-def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_time, logger):
+def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dry_run, run_date_time, logger):
     accounts_logged_in = 0
     accounts_not_logged_in = 0
     accounts_not_logged_in_list = []
@@ -16,6 +17,8 @@ def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_
 
     for key in client_keys:
         client_name = clients_dict[key]['name']
+
+        reg.get_resource_ids_list(client_name, resource_keys, resources_dict, run_date_time, logger)
 
         for profile in clients_dict[key]['profiles']:
             profile_name = profile['profile_name']
@@ -35,7 +38,7 @@ def process_clients(clients_dict, client_keys, resource_keys, dry_run, run_date_
                 for region in profile['region']:
                     ips_region, images_region, snapshots_region, \
                         volumes_region, rds_region = dr.delete_resources(profile, client_name, region, resource_keys,
-                                                                         dry_run, run_date_time, logger)
+                                                                         resources_dict, dry_run, run_date_time, logger)
                     ips += ips_region
                     images += images_region
                     snapshots += snapshots_region

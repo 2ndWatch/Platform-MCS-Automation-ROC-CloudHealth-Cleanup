@@ -1,9 +1,10 @@
 import botocore.exceptions
 import os
+import shutil
 
 
-def describe_ami_snapshots(ec2_client, client_name, image_id, run_date_time, logger):
-    error_msg = f'   The image id {image_id} does not exist in this region or account.'
+def get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name, run_date_time, logger):
+    error_msg = f'      The image id {image_id} does not exist in this region or account.'
     logger.info(f'   Searching for {image_id}...')
     try:
         response = ec2_client.describe_images(ImageIds=[image_id])
@@ -15,7 +16,7 @@ def describe_ami_snapshots(ec2_client, client_name, image_id, run_date_time, log
                     snapshot_id = block_device['Ebs']['SnapshotId']
                     snapshot_ids.append(snapshot_id)
             if snapshot_ids:
-                with open(f'{client_name}_{run_date_time}/{client_name} old image snaps.txt', 'a') as file:
+                with open(f'{client_name}_{run_date_time}/{image_snaps_file_name}', 'a') as file:
                     for snapshot_id in snapshot_ids:
                         file.write(snapshot_id + '\n')
             return snapshot_ids
@@ -26,7 +27,7 @@ def describe_ami_snapshots(ec2_client, client_name, image_id, run_date_time, log
         logger.info(error_msg)
 
 
-def deregister_ami(ec2_client, image_id, dry_run, logger):
+def deregister_image(ec2_client, image_id, dry_run, logger):
     logger.info(f'   Trying deregistration of {image_id}...')
     deregistered = False
     try:
@@ -56,9 +57,9 @@ def delete_snapshot(ec2_client, snapshot_id, dry_run, logger):
     return deleted
 
 
-def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_time, logger):
-    old_images_file_name = f'{client_name} old images.txt'
-    image_snaps_file_name = f'{client_name} old image snaps.txt'
+def delete_old_images(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
+    old_images_file_name = f'{client_name} {resource_name}.txt'
+    image_snaps_file_name = f'{client_name} {resource_name} snaps.txt'
     images_deregistered = 0
     snapshots_deleted = 0
 
@@ -70,6 +71,8 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
 
     # Read image IDs from file
     try:
+        shutil.copy(f'{client_name}_{run_date_time}/{old_images_file_name}',
+                    f'{client_name}_{run_date_time}/Copy of {old_images_file_name}')
         with open(f'{client_name}_{run_date_time}/{old_images_file_name}', 'r') as file:
             image_ids = [line.strip() for line in file]
             logger.info(f'Locating {len(image_ids)} images...')
@@ -78,18 +81,19 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
         return images_deregistered, snapshots_deleted
 
     original_image_ids_length = len(image_ids)
-    amis_to_deregister = []
+    images_to_deregister = []
 
     # Search for each image ID. If it exists, add its EBS snapshot IDs to a list, and deregister the image
     for image_id in image_ids:
-        ami_snaps = describe_ami_snapshots(ec2_client, client_name, image_id, run_date_time, logger)
-        if ami_snaps:
-            amis_to_deregister.append(image_id)
-            logger.info(f'         {len(ami_snaps)} snapshots for {image_id}: {ami_snaps}')
-    if amis_to_deregister:
-        logger.info(f'\nDeregistering {len(amis_to_deregister)} images...')
-        for image_id in amis_to_deregister:
-            deregistered = deregister_ami(ec2_client, image_id, dry_run, logger)
+        image_snaps = get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name,
+                                          run_date_time, logger)
+        if image_snaps:
+            images_to_deregister.append(image_id)
+            logger.info(f'         {len(image_snaps)} snapshots for {image_id}: {image_snaps}')
+    if images_to_deregister:
+        logger.info(f'\nDeregistering {len(images_to_deregister)} images...')
+        for image_id in images_to_deregister:
+            deregistered = deregister_image(ec2_client, image_id, dry_run, logger)
             if deregistered:
                 images_deregistered += 1
                 image_ids.remove(image_id)
@@ -99,7 +103,7 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
 
     # Rewrite old images file if images were deregistered
     if 0 < len(image_ids) < original_image_ids_length:
-        logger.info('Rewriting images file...')
+        logger.info('Rewriting working images file...')
         os.remove(f'{client_name}_{run_date_time}/{old_images_file_name}')
         file = open(f'{client_name}_{run_date_time}/{old_images_file_name}', 'w')
         for image_id in image_ids:
@@ -113,6 +117,8 @@ def delete_old_images(ec2_client, client_name, region_name, dry_run, run_date_ti
     try:
         with open(f'{client_name}_{run_date_time}/{image_snaps_file_name}', 'r') as file:
             all_snapshot_ids = [line.strip() for line in file]
+        shutil.copy(f'{client_name}_{run_date_time}/{image_snaps_file_name}',
+                    f'{client_name}_{run_date_time}/{region_name} {image_snaps_file_name}')
     except FileNotFoundError:
         logger.info(f'\nAuto-generated file not found: {image_snaps_file_name}. No snapshots to delete.')
         return images_deregistered, snapshots_deleted

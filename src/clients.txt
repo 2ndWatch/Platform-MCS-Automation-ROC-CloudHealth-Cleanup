@@ -1,6 +1,6 @@
 {
     "a": {
-        "name": "CKE",
+        "name": "CKE Restaurants",
         "profiles": [
             {
                 "account_name": "CKE Restaurants MPA/Prod",
@@ -13,7 +13,7 @@
         ]
     },
     "b": {
-        "name": "Cypherworx",
+        "name": "CypherWorx",
         "profiles": [
             {
                 "account_name": "CypherWorx Main Account",

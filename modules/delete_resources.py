@@ -2,7 +2,8 @@ import boto3
 import modules.delete_old_images as doi
 
 
-def delete_resources(profile, client_name, region_name, resource_keys, dry_run, run_date_time, logger):
+def delete_resources(profile, client_name, region_name, resource_keys, resources_dict, dry_run, run_date_time,
+                     logger):
     account_name = profile['account_name']
     # account_number = profile['account_number']
 
@@ -19,26 +20,34 @@ def delete_resources(profile, client_name, region_name, resource_keys, dry_run, 
     rds = 0
 
     for key in resource_keys:
+        resource_name = resources_dict[key]
+
         if key == '1':
-            logger.info('\nUnattached elastic IPS:\n----------------------')
+            logger.info('\nEC2 Old Snapshots:'
+                        '\n-----------------')
             logger.info('   No action.')
         if key == '2':
-            logger.info('\nOld EC2 images:\n--------------')
-            images_doi, snapshots_doi = doi.delete_old_images(ec2, client_name, region_name, dry_run,
+            logger.info('\nOld EC2 Image:'
+                        '\n-------------')
+            images_doi, snapshots_doi = doi.delete_old_images(ec2, client_name, region_name, resource_name, dry_run,
                                                               run_date_time, logger)
             images += images_doi
             snapshots += snapshots_doi
         if key == '3':
-            logger.info('\nOld EBS snapshots:\n-----------------')
+            logger.info('\nEC2 Image Not Associated:'
+                        '\n------------------------')
             logger.info('   No action.')
         if key == '4':
-            logger.info('\nUnused EC2 images:\n-----------------')
+            logger.info('\nUnattached Elastic IPs:'
+                        '\n----------------------')
             logger.info('   No action.')
         if key == '5':
-            logger.info('\nUnattached EBS volumes:\n----------------------')
+            logger.info('\nUnattached EBS Volumes:'
+                        '\n----------------------')
             logger.info('   No action.')
         if key == '6':
-            logger.info('\nOld RDS/Aurora snapshots:\n------------------------')
+            logger.info('\nRDS Old Snapshots:'
+                        '\n-----------------')
             logger.info('   No action.')
 
     return ips, images, snapshots, volumes, rds
