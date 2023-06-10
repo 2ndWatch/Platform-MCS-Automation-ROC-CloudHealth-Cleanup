@@ -1,5 +1,6 @@
 import boto3
-import modules.delete_old_images as doi
+import modules.delete_images as di
+import modules.release_ips as ri
 
 
 def delete_resources(profile, client_name, region_name, resource_keys, resources_dict, dry_run, run_date_time,
@@ -29,18 +30,23 @@ def delete_resources(profile, client_name, region_name, resource_keys, resources
         if key == '2':
             logger.info('\nOld EC2 Image:'
                         '\n-------------')
-            images_doi, snapshots_doi = doi.delete_old_images(ec2, client_name, region_name, resource_name, dry_run,
-                                                              run_date_time, logger)
-            images += images_doi
-            snapshots += snapshots_doi
+            image_count, snashot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
+                                                          run_date_time, logger)
+            images += image_count
+            snapshots += snashot_count
         if key == '3':
             logger.info('\nEC2 Image Not Associated:'
                         '\n------------------------')
-            logger.info('   No action.')
+            image_count, snashot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
+                                                          run_date_time, logger)
+            images += image_count
+            snapshots += snashot_count
         if key == '4':
             logger.info('\nUnattached Elastic IPs:'
                         '\n----------------------')
-            logger.info('   No action.')
+            ip_count = ri.release_ips(ec2, client_name, region_name, resource_name, dry_run,
+                                      run_date_time, logger)
+            ips += ip_count
         if key == '5':
             logger.info('\nUnattached EBS Volumes:'
                         '\n----------------------')
