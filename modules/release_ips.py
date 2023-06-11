@@ -57,14 +57,12 @@ def release_ips(ec2_client, client_name, region_name, resource_name, dry_run, ru
 
     # Search for each IP. If it exists, delete the IP
     for ip in ips_list:
-        ip_exists = get_ip(ec2_client, ip, logger)
-        if ip_exists:
+        if get_ip(ec2_client, ip, logger):
             ips_to_release.append(ip)
     if ips_to_release:
         logger.info(f'\nReleasing {len(ips_to_release)} IPs...')
         for ip_to_release in ips_to_release:
-            released = release_ip(ec2_client, ip_to_release, dry_run, logger)
-            if released:
+            if release_ip(ec2_client, ip_to_release, dry_run, logger):
                 ips_released += 1
                 ips_list.remove(ip_to_release)
 
