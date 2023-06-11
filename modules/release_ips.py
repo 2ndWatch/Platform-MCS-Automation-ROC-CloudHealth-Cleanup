@@ -38,18 +38,22 @@ def release_ip(ec2_client, ip, dry_run, logger):
 
 
 def release_ips(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
-    ips_file_name = f'{client_name} {resource_name}.txt'
+    resource_ids_file_name = f'{client_name} {resource_name}.txt'
     ips_released = 0
+
+    # Copy the resource ids file if a copy doesn't already exist
+    file_copy_path = f'{client_name}_{run_date_time}/Copy of {resource_ids_file_name}'
+    if not os.path.isfile(file_copy_path):
+        shutil.copy(f'{client_name}_{run_date_time}/{resource_ids_file_name}', file_copy_path)
+        logger.info('Initial copy of resource ID file was successful.')
 
     # Read IPs from file
     try:
-        shutil.copy(f'{client_name}_{run_date_time}/{ips_file_name}',
-                    f'{client_name}_{run_date_time}/Copy of {ips_file_name}')
-        with open(f'{client_name}_{run_date_time}/{ips_file_name}', 'r') as file:
+        with open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'r') as file:
             ips_list = [line.strip() for line in file]
             logger.info(f'Locating {len(ips_list)} IPs...')
     except FileNotFoundError:
-        logger.info(f'File not found: {ips_file_name}. Skipping IP release in {region_name}.')
+        logger.info(f'File not found: {resource_ids_file_name}. Skipping IP release in {region_name}.')
         return ips_released
 
     original_ips_list_length = len(ips_list)
@@ -72,13 +76,13 @@ def release_ips(ec2_client, client_name, region_name, resource_name, dry_run, ru
     # Rewrite IPs file if IPs were deleted
     if 0 < len(ips_list) < original_ips_list_length:
         logger.info('Rewriting working IPs file...')
-        os.remove(f'{client_name}_{run_date_time}/{ips_file_name}')
-        file = open(f'{client_name}_{run_date_time}/{ips_file_name}', 'w')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
+        file = open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'w')
         for ip in ips_list:
             file.write(ip + '\n')
         file.close()
     elif not ips_list:
-        os.remove(f'{client_name}_{run_date_time}/{ips_file_name}')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
         logger.info('All IPs released. IPs file removed.')
 
     return ips_released

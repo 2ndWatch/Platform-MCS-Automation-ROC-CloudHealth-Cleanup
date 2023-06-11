@@ -38,18 +38,22 @@ def delete_snapshot(ec2_client, snapshot_id, dry_run, logger):
 
 
 def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
-    snapshots_file_name = f'{client_name} {resource_name}.txt'
+    resource_ids_file_name = f'{client_name} {resource_name}.txt'
     snapshots_deleted = 0
+
+    # Copy the resource ids file if a copy doesn't already exist
+    file_copy_path = f'{client_name}_{run_date_time}/Copy of {resource_ids_file_name}'
+    if not os.path.isfile(file_copy_path):
+        shutil.copy(f'{client_name}_{run_date_time}/{resource_ids_file_name}', file_copy_path)
+        logger.info('Initial copy of resource ID file was successful.')
 
     # Read snapshots from file
     try:
-        shutil.copy(f'{client_name}_{run_date_time}/{snapshots_file_name}',
-                    f'{client_name}_{run_date_time}/Copy of {snapshots_file_name}')
-        with open(f'{client_name}_{run_date_time}/{snapshots_file_name}', 'r') as file:
+        with open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'r') as file:
             snapshots_list = [line.strip() for line in file]
             logger.info(f'Locating {len(snapshots_list)} snapshots...')
     except FileNotFoundError:
-        logger.info(f'File not found: {snapshots_file_name}. Skipping snapshot deletion in {region_name}.')
+        logger.info(f'File not found: {resource_ids_file_name}. Skipping snapshot deletion in {region_name}.')
         return snapshots_deleted
 
     original_snapshots_list_length = len(snapshots_list)
@@ -72,13 +76,13 @@ def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_ru
     # Rewrite snapshots file if snapshots were deleted
     if 0 < len(snapshots_list) < original_snapshots_list_length:
         logger.info('Rewriting working snapshots file...')
-        os.remove(f'{client_name}_{run_date_time}/{snapshots_file_name}')
-        file = open(f'{client_name}_{run_date_time}/{snapshots_file_name}', 'w')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
+        file = open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'w')
         for snap in snapshots_list:
             file.write(snap + '\n')
         file.close()
     elif not snapshots_list:
-        os.remove(f'{client_name}_{run_date_time}/{snapshots_file_name}')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
         logger.info('All snapshots deleted. Snapshots file removed.')
 
     return snapshots_deleted

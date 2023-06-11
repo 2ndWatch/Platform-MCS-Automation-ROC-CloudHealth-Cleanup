@@ -58,10 +58,16 @@ def delete_snapshot(ec2_client, snapshot_id, dry_run, logger):
 
 
 def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
-    images_file_name = f'{client_name} {resource_name}.txt'
+    resource_ids_file_name = f'{client_name} {resource_name}.txt'
     image_snaps_file_name = f'{client_name} {resource_name} snaps.txt'
     images_deregistered = 0
     snapshots_deleted = 0
+
+    # Copy the resource ids file if a copy doesn't already exist
+    file_copy_path = f'{client_name}_{run_date_time}/Copy of {resource_ids_file_name}'
+    if not os.path.isfile(file_copy_path):
+        shutil.copy(f'{client_name}_{run_date_time}/{resource_ids_file_name}', file_copy_path)
+        logger.info('Initial copy of resource ID file was successful.')
 
     # Delete image snapshot file if it exists, to avoid trying to delete snapshots in every region/account
     try:
@@ -71,13 +77,11 @@ def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, 
 
     # Read image IDs from file
     try:
-        shutil.copy(f'{client_name}_{run_date_time}/{images_file_name}',
-                    f'{client_name}_{run_date_time}/Copy of {images_file_name}')
-        with open(f'{client_name}_{run_date_time}/{images_file_name}', 'r') as file:
+        with open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'r') as file:
             image_ids = [line.strip() for line in file]
             logger.info(f'Locating {len(image_ids)} images...')
     except FileNotFoundError:
-        logger.info(f'File not found: {images_file_name}. Skipping image deregistration in {region_name}.')
+        logger.info(f'File not found: {resource_ids_file_name}. Skipping image deregistration in {region_name}.')
         return images_deregistered, snapshots_deleted
 
     original_image_ids_length = len(image_ids)
@@ -104,13 +108,13 @@ def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, 
     # Rewrite old images file if images were deregistered
     if 0 < len(image_ids) < original_image_ids_length:
         logger.info('Rewriting working images file...')
-        os.remove(f'{client_name}_{run_date_time}/{images_file_name}')
-        file = open(f'{client_name}_{run_date_time}/{images_file_name}', 'w')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
+        file = open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'w')
         for image_id in image_ids:
             file.write(image_id + '\n')
         file.close()
     elif not image_ids:
-        os.remove(f'{client_name}_{run_date_time}/{images_file_name}')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
         logger.info('All images deregistered. Images file removed.')
 
     # Read snapshot IDs from file

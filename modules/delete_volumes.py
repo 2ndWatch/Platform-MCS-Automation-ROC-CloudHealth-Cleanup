@@ -38,18 +38,22 @@ def delete_volume(ec2_client, volume_id, dry_run, logger):
 
 
 def delete_volumes(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
-    volumes_file_name = f'{client_name} {resource_name}.txt'
+    resource_ids_file_name = f'{client_name} {resource_name}.txt'
     volumes_deleted = 0
+
+    # Copy the resource ids file if a copy doesn't already exist
+    file_copy_path = f'{client_name}_{run_date_time}/Copy of {resource_ids_file_name}'
+    if not os.path.isfile(file_copy_path):
+        shutil.copy(f'{client_name}_{run_date_time}/{resource_ids_file_name}', file_copy_path)
+        logger.info('Initial copy of resource ID file was successful.')
 
     # Read volumes from file
     try:
-        shutil.copy(f'{client_name}_{run_date_time}/{volumes_file_name}',
-                    f'{client_name}_{run_date_time}/Copy of {volumes_file_name}')
-        with open(f'{client_name}_{run_date_time}/{volumes_file_name}', 'r') as file:
+        with open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'r') as file:
             volumes_list = [line.strip() for line in file]
             logger.info(f'Locating {len(volumes_list)} volumes...')
     except FileNotFoundError:
-        logger.info(f'File not found: {volumes_file_name}. Skipping volume deletion in {region_name}.')
+        logger.info(f'File not found: {resource_ids_file_name}. Skipping volume deletion in {region_name}.')
         return volumes_deleted
 
     original_volumes_list_length = len(volumes_list)
@@ -72,13 +76,13 @@ def delete_volumes(ec2_client, client_name, region_name, resource_name, dry_run,
     # Rewrite volumes file if volumes were deleted
     if 0 < len(volumes_list) < original_volumes_list_length:
         logger.info('Rewriting working volumes file...')
-        os.remove(f'{client_name}_{run_date_time}/{volumes_file_name}')
-        file = open(f'{client_name}_{run_date_time}/{volumes_file_name}', 'w')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
+        file = open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'w')
         for volume in volumes_list:
             file.write(volume + '\n')
         file.close()
     elif not volumes_list:
-        os.remove(f'{client_name}_{run_date_time}/{volumes_file_name}')
+        os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
         logger.info('All volumes deleted. Volumes file removed.')
 
     return volumes_deleted
