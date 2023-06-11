@@ -2,6 +2,7 @@ import boto3
 import modules.delete_images as di
 import modules.release_ips as ri
 import modules.delete_volumes as dv
+import modules.delete_snapshots as des
 
 
 def delete_resources(profile, client_name, region_name, resource_keys, resources_dict, dry_run, run_date_time,
@@ -27,7 +28,9 @@ def delete_resources(profile, client_name, region_name, resource_keys, resources
         if key == '1':
             logger.info('\nEC2 Old Snapshots:'
                         '\n-----------------')
-            logger.info('   No action.')
+            snapshot_count = des.delete_snapshots(ec2, client_name, region_name, resource_name, dry_run,
+                                                  run_date_time, logger)
+            snapshots += snapshot_count
         if key == '2':
             logger.info('\nOld EC2 Image:'
                         '\n-------------')
