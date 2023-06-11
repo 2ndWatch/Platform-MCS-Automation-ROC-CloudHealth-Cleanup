@@ -2,13 +2,13 @@ import boto3
 import modules.delete_images as di
 import modules.release_ips as ri
 import modules.delete_volumes as dv
-import modules.delete_snapshots as des
+import modules.delete_ec2_snapshots as des
+import modules.delete_rds_snapshots as drs
 
 
 def delete_resources(profile, client_name, region_name, resource_keys, resources_dict, dry_run, run_date_time,
                      logger):
     account_name = profile['account_name']
-    # account_number = profile['account_number']
 
     session = boto3.Session(region_name=region_name)
     ec2 = session.client('ec2')
@@ -60,6 +60,7 @@ def delete_resources(profile, client_name, region_name, resource_keys, resources
         if key == '6':
             logger.info('\nRDS Old Snapshots:'
                         '\n-----------------')
-            logger.info('   No action.')
-
+            rds_count = drs.delete_snapshots(ec2, client_name, region_name, resource_name, dry_run,
+                                             run_date_time, logger)
+            rds += rds_count
     return ips, images, snapshots, volumes, rds
