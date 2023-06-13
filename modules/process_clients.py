@@ -13,10 +13,14 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
     images = 0
     snapshots = 0
     volumes = 0
-    rds = 0
+    rds_snaps = 0
 
     for key in client_keys:
         client_name = clients_dict[key]['name']
+        msg = f'Starting resource deletion process for {client_name}.'
+        logger.info(f'\n{"+" * len(msg)}'
+                    f'\n{msg}'
+                    f'\n{"+" * len(msg)}')
 
         reg.get_resource_ids(client_name, resource_keys, resources_dict, run_date_time, logger)
 
@@ -43,7 +47,7 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
                     images += images_region
                     snapshots += snapshots_region
                     volumes += volumes_region
-                    rds += rds_region
+                    rds_snaps += rds_region
             else:
                 logger.info(f'You were not logged in, skipping {profile["profile_name"]}.')
                 accounts_not_logged_in += 1
@@ -58,4 +62,4 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
         # Return if no accounts were accessed
         return 1
     else:
-        return accounts_not_logged_in_list, ips, images, snapshots, volumes, rds
+        return accounts_not_logged_in_list, ips, images, snapshots, volumes, rds_snaps

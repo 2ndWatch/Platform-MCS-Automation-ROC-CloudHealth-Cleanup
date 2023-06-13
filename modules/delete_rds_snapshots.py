@@ -3,13 +3,13 @@ import os
 import shutil
 
 
-def get_db_snapshot(ec2_client, snapshot_id, logger):
+def get_db_snapshot(rds_client, snapshot_id, logger):
     error_msg = f'      {snapshot_id} is not an RDS snapshot in this region or account.'
     logger.info(f'   Searching for {snapshot_id}...')
     db_snapshot_exists = False
 
     try:
-        response = ec2_client.describe_db_snapshots(DBSnapshotIdentifier=[snapshot_id])
+        response = rds_client.describe_db_snapshots(DBSnapshotIdentifier=snapshot_id)
         if response['DBSnapshots']:
             logger.info('      RDS snapshot found.')
             db_snapshot_exists = True
@@ -22,13 +22,13 @@ def get_db_snapshot(ec2_client, snapshot_id, logger):
     return db_snapshot_exists
 
 
-def get_cluster_snapshot(ec2_client, snapshot_id, logger):
+def get_cluster_snapshot(rds_client, snapshot_id, logger):
     error_msg = f'      {snapshot_id} is not an Aurora snapshot in this region or account.'
     logger.info(f'   Searching for {snapshot_id}...')
     cluster_snapshot_exists = False
 
     try:
-        response = ec2_client.describe_db_cluster_snapshots(DBClusterSnapshotIdentifier=[snapshot_id])
+        response = rds_client.describe_db_cluster_snapshots(DBClusterSnapshotIdentifier=snapshot_id)
         if response['DBClusterSnapshots']:
             logger.info('      Aurora snapshot found.')
             cluster_snapshot_exists = True
@@ -41,7 +41,7 @@ def get_cluster_snapshot(ec2_client, snapshot_id, logger):
     return cluster_snapshot_exists
 
 
-def delete_db_snapshot(ec2_client, snapshot_id, dry_run, logger):
+def delete_db_snapshot(rds_client, snapshot_id, dry_run, logger):
     logger.info(f'   Trying deletion of {snapshot_id}...')
     deleted = False
     if dry_run:
@@ -49,7 +49,7 @@ def delete_db_snapshot(ec2_client, snapshot_id, dry_run, logger):
                     'some other logic failed and the API call was prevented here instead.')
     else:
         try:
-            response = ec2_client.delete_db_snapshot(DBSnapshotIdentifier=snapshot_id)
+            response = rds_client.delete_db_snapshot(DBSnapshotIdentifier=snapshot_id)
             logger.info(f'      {response}')
             deleted = True
         except botocore.exceptions.ClientError as e:
@@ -58,7 +58,7 @@ def delete_db_snapshot(ec2_client, snapshot_id, dry_run, logger):
     return deleted
 
 
-def delete_cluster_snapshot(ec2_client, snapshot_id, dry_run, logger):
+def delete_cluster_snapshot(rds_client, snapshot_id, dry_run, logger):
     logger.info(f'   Trying deletion of {snapshot_id}...')
     deleted = False
     if dry_run:
@@ -66,7 +66,7 @@ def delete_cluster_snapshot(ec2_client, snapshot_id, dry_run, logger):
                     'some other logic failed and the API call was prevented here instead.')
     else:
         try:
-            response = ec2_client.delete_cluster_snapshot(DBClusterSnapshotIdentifier=snapshot_id)
+            response = rds_client.delete_cluster_snapshot(DBClusterSnapshotIdentifier=snapshot_id)
             logger.info(f'      {response}')
             deleted = True
         except botocore.exceptions.ClientError as e:
@@ -75,7 +75,7 @@ def delete_cluster_snapshot(ec2_client, snapshot_id, dry_run, logger):
     return deleted
 
 
-def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
+def delete_snapshots(rds_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
     resource_ids_file_name = f'{client_name} {resource_name}.txt'
     snapshots_deleted = 0
 
@@ -100,18 +100,18 @@ def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_ru
 
     # Search for each snapshot. If it exists, delete the snapshot
     for snap in snapshots_list:
-        if get_db_snapshot(ec2_client, snap, logger):
+        if get_db_snapshot(rds_client, snap, logger):
             rds_snapshots_to_delete.append(snap)
-        elif get_cluster_snapshot(ec2_client, snap, logger):
+        elif get_cluster_snapshot(rds_client, snap, logger):
             aurora_snapshots_to_delete.append(snap)
         else:
-            logger.info(f'Something weird happened with {snap}; please submit the log for this run.')
+            logger.info(f'         Skipping {snap}...')
 
     # Double failsafe in place to prevent API calls if dry_run is set to True
     if dry_run:
-        logger.info(f'      Dry Run is set to True. There is no DryRun parameter for delete_db_snapshot or '
-                    f'delete_cluster_snapshot, so no API calls will be made to prevent resource deletion.'
-                    f'\n\nThere are {len(rds_snapshots_to_delete)} RDS snapshots and {len(aurora_snapshots_to_delete)} '
+        logger.info(f'\n\nDry Run is set to True. There is no DryRun parameter for delete_db_snapshot or '
+                    f'delete_cluster_snapshot, so no API calls will be made in order to prevent resource deletion.'
+                    f'\nThere are {len(rds_snapshots_to_delete)} RDS snapshots and {len(aurora_snapshots_to_delete)} '
                     f'Aurora snapshots that can be deleted in this region.')
         if rds_snapshots_to_delete:
             for snap_to_delete in rds_snapshots_to_delete:
@@ -123,13 +123,13 @@ def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_ru
         if rds_snapshots_to_delete:
             logger.info(f'\nDeleting {len(rds_snapshots_to_delete)} RDS snapshots...')
             for snap_to_delete in rds_snapshots_to_delete:
-                if delete_db_snapshot(ec2_client, snap_to_delete, dry_run, logger):
+                if delete_db_snapshot(rds_client, snap_to_delete, dry_run, logger):
                     snapshots_deleted += 1
                     snapshots_list.remove(snap_to_delete)
         if aurora_snapshots_to_delete:
             logger.info(f'\nDeleting {len(aurora_snapshots_to_delete)} Aurora snapshots...')
             for snap_to_delete in aurora_snapshots_to_delete:
-                if delete_cluster_snapshot(ec2_client, snap_to_delete, dry_run, logger):
+                if delete_cluster_snapshot(rds_client, snap_to_delete, dry_run, logger):
                     snapshots_deleted += 1
                     snapshots_list.remove(snap_to_delete)
 
@@ -146,6 +146,9 @@ def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_ru
         file.close()
     elif not snapshots_list:
         os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
-        logger.info('All snapshots deleted. Snapshots file removed.')
+        if dry_run:
+            logger.info('No snapshots deleted, but all snapshots were found. Snapshots file removed.')
+        else:
+            logger.info('All snapshots deleted. Snapshots file removed.')
 
     return snapshots_deleted

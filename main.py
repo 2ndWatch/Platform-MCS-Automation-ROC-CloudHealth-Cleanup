@@ -71,7 +71,7 @@ def main(clients):
     resource_choices = []
     for key, value in resources_dict.items():
         resource_choices.append(f'{key} {value}')
-    logger.info(resource_choices)
+    # logger.info(resource_choices)
 
     while 1:
         selected_clients = eg.multchoicebox('Select one or multiple clients by left-clicking.'
@@ -81,11 +81,11 @@ def main(clients):
             sys.exit(0)
 
         client_keys, client_names = parse_selection(selected_clients)
-        logger.info(f'Client keys: {client_keys}')
+        # logger.info(f'Client keys: {client_keys}')
         logger.info(f'You are running the program for: {client_names}')
 
         # Create directories for selected clients
-        logger.info('\nCreating directories for client(s)...')
+        logger.info('Creating directories for client(s)...')
         create_directories(client_names)
 
         selected_resources = eg.multchoicebox('Select one or multiple resources by left-clicking.'
@@ -95,8 +95,8 @@ def main(clients):
             sys.exit(0)
 
         resource_keys, resource_names = parse_selection(selected_resources)
-        logger.info(f'Resource keys: {resource_keys}')
-        logger.info(f'You are running the program for: {resource_names}')
+        # logger.info(f'Resource keys: {resource_keys}')
+        logger.info(f'\nYou are deleting the following resources: {resource_names}')
 
         # Returns True for Dry Run and False for Delete Stuff
         dry_run = eg.ccbox('! ! !   IMPORTANT   ! ! !'
@@ -105,14 +105,21 @@ def main(clients):
                            '\n\nYour selection will show in the next window. If you click the wrong button by mistake, '
                            'you will be able to exit the program and try again.',
                            title='Dry Run/Delete Stuff', choices=['Dry Run', 'Delete Stuff'], cancel_choice='Dry Run')
-        if not dry_run:
+        if dry_run is None:
             sys.exit(0)
 
-        logger.info(f'\nDry run is set to {dry_run}.')
+        if dry_run:
+            ready_msg = 'You have selected to perform a DRY RUN. No resources will be deleted.'
+            end_msg = 'This was a DRY RUN. No resources were deleted.'
+        else:
+            ready_msg = '! ! ! You have selected to DELETE RESOURCES. ! ! !' \
+                        '\nMake sure this is what you intend. If not, exit the program and start over.'
+            end_msg = 'The resource deletion process is complete.'
+
+        logger.info(f'\n{ready_msg}')
 
         ready = eg.ccbox(f'You chose: {resource_names}\n   for {client_names}.'
-                         f'\n\nThis is a DRY RUN: {dry_run}.'
-                         f'\nMake sure this is what you intend. If not, exit the program and start over.'
+                         f'\n\n{ready_msg}'
                          f'\n\nYou can track deletion progress in the console window.'
                          f'\n\nClick the <Run> button to begin resource deletion.'
                          f'\nClick the <Exit> button to exit the program without deleting any resources.',
@@ -120,9 +127,9 @@ def main(clients):
         if not ready:
             sys.exit(0)
 
-        process_result, ips, images, snapshots, volumes, rds = pc.process_clients(clients_dict, client_keys,
-                                                                                  resource_keys, resources_dict,
-                                                                                  dry_run, run_date_time, logger)
+        process_result, ips, images, snapshots, volumes, rds_snaps = pc.process_clients(clients_dict, client_keys,
+                                                                                        resource_keys, resources_dict,
+                                                                                        dry_run, run_date_time, logger)
 
         if process_result == 1:
 
@@ -136,26 +143,24 @@ def main(clients):
         else:
 
             # At least one login was successful; displays any logins that did not succeed
-            logger.info(f'\nResource deletion is complete. If this was a dry run --> [{dry_run}] <-- then no resources '
-                        f'were actually deleted.'
+            logger.info(f'\n{end_msg}'
                         f'\n\nSummary:'
                         f'\nIPs released: {ips}'
                         f'\nImages deregistered: {images}'
                         f'\nEBS snapshots deleted: {snapshots}'
                         f'\nVolumes deleted: {volumes}'
-                        f'\nRDS snapshots deleted: {rds}'
+                        f'\nRDS snapshots deleted: {rds_snaps}'
                         f'\n\nAccounts not logged into: {process_result}'
                         f'\n\nClient directories for this run are appended with {run_date_time}.'
                         f'\n\nThe log file can be found in the <log> directory.')
 
-            eg.msgbox(f'Resource deletion is complete. If this was a dry run --> [{dry_run}] <-- then no resources '
-                      f'were actually deleted.'
+            eg.msgbox(f'{end_msg}'
                       f'\n\nSummary:'
                       f'\nIPs released: {ips}'
                       f'\nImages deregistered: {images}'
                       f'\nEBS snapshots deleted: {snapshots}'
                       f'\nVolumes deleted: {volumes}'
-                      f'\nRDS snapshots deleted: {rds}'
+                      f'\nRDS snapshots deleted: {rds_snaps}'
                       f'\n\nAccounts not logged into: {process_result}'
                       f'\n\nClient directories for this run are appended with {run_date_time}.'
                       f'\n\nThe log file can be found in the <log> directory.'

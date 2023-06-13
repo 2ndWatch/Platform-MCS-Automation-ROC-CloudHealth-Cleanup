@@ -20,7 +20,7 @@ def delete_resources(profile, client_name, region_name, resource_keys, resources
     images = 0
     snapshots = 0
     volumes = 0
-    rds = 0
+    rds_snaps = 0
 
     for key in resource_keys:
         resource_name = resources_dict[key]
@@ -60,7 +60,7 @@ def delete_resources(profile, client_name, region_name, resource_keys, resources
         if key == '6':
             logger.info('\nRDS Old Snapshots:'
                         '\n-----------------')
-            rds_count = drs.delete_snapshots(ec2, client_name, region_name, resource_name, dry_run,
+            rds_count = drs.delete_snapshots(rds, client_name, region_name, resource_name, dry_run,
                                              run_date_time, logger)
-            rds += rds_count
-    return ips, images, snapshots, volumes, rds
+            rds_snaps += rds_count
+    return ips, images, snapshots, volumes, rds_snaps
