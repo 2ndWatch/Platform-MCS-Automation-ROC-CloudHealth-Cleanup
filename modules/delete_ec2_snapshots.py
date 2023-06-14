@@ -64,7 +64,7 @@ def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_ru
         if get_snapshot(ec2_client, snap, logger):
             snapshots_to_delete.append(snap)
     if snapshots_to_delete:
-        logger.info(f'\nDeleting {len(snapshots_to_delete)} volumes...')
+        logger.info(f'\nDeleting {len(snapshots_to_delete)} snapshots...')
         for snap_to_delete in snapshots_to_delete:
             if delete_snapshot(ec2_client, snap_to_delete, dry_run, logger):
                 snapshots_deleted += 1
