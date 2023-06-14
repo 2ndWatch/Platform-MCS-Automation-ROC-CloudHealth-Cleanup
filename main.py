@@ -52,6 +52,7 @@ def main(clients):
                         '\n\nClick the <Begin> button to proceed.',
                         '2nd Watch Cloud Health Resource Deleter', ok_button='Begin')
     if welcome is None:  # User closed msgbox
+        logger.info(f'\nExiting application.')
         sys.exit(0)
 
     # Create a list of clients from which to select
@@ -78,6 +79,7 @@ def main(clients):
                                             '\n\nlick the <Cancel> button to exit.',
                                             'Client Selection', client_choices, preselect=None)
         if selected_clients is None:
+            logger.info(f'\nExiting application.')
             sys.exit(0)
 
         client_keys, client_names = parse_selection(selected_clients)
@@ -92,6 +94,7 @@ def main(clients):
                                               '\n\nClick the <Cancel> button to exit.',
                                               'Resource Selection', resource_choices, preselect=None)
         if selected_resources is None:
+            logger.info(f'\nExiting application.')
             sys.exit(0)
 
         resource_keys, resource_names = parse_selection(selected_resources)
@@ -106,6 +109,7 @@ def main(clients):
                            'you will be able to exit the program and try again.',
                            title='Dry Run/Delete Stuff', choices=['Dry Run', 'Delete Stuff'], cancel_choice='Dry Run')
         if dry_run is None:
+            logger.info(f'\nExiting application.')
             sys.exit(0)
 
         if dry_run:
@@ -125,6 +129,7 @@ def main(clients):
                          f'\nClick the <Exit> button to exit the program without deleting any resources.',
                          title='Selection Result', choices=['Run', 'Exit'], cancel_choice='Exit')
         if not ready:
+            logger.info(f'\nExiting application.')
             sys.exit(0)
 
         process_result, ips, images, snapshots, volumes, rds_snaps = pc.process_clients(clients_dict, client_keys,

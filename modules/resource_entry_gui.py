@@ -20,6 +20,7 @@ def get_resource_ids(client_name, resource_keys, resources_dict, run_date_time, 
                                 f'<OK> button.',
                                 title=f'{client_name} {resource_name} Resource Entry')
             if entry is None:
+                logger.info(f'\nExiting application.')
                 sys.exit(0)
 
             if entry:
