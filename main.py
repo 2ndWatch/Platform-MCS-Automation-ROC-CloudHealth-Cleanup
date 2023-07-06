@@ -17,7 +17,7 @@ console = logging.StreamHandler(sys.stdout)
 console.setLevel(logging.INFO)
 logger.addHandler(console)
 
-with open('src/clients.txt') as cl:
+with open('src/clients.json') as cl:
     cl_txt = cl.read()
 clients_dict = json.loads(cl_txt)
 
@@ -75,8 +75,13 @@ def main(clients):
     # logger.info(resource_choices)
 
     while 1:
+
+        # TODO: remove warning message once SSO is integrated.
+
         selected_clients = eg.multchoicebox('Select one or multiple clients by left-clicking.'
-                                            '\n\nlick the <Cancel> button to exit.',
+                                            '\n\nClick the <Cancel> button to exit.'
+                                            '\n\nWARNING:'
+                                            '\nDo not run for Sysco or Pathward at this time.',
                                             'Client Selection', client_choices, preselect=None)
         if selected_clients is None:
             logger.info(f'\nExiting application.')

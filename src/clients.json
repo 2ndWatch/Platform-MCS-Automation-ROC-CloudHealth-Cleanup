@@ -1,0 +1,1932 @@
+{
+    "ck": {
+        "name": "CKE Restaurants",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "CKE Restaurants MPA/Prod",
+                "profile_name": "CKERestaurants512176277481",
+                "account_number": "512176277481",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7b0eca21-b784-4d1c-9ca3-ce1300049e17"
+            }
+        ]
+    },
+    "co": {
+        "name": "Coaction",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "EDP",
+                "profile_name": "Coaction095382528546",
+                "account_number": "095382528546",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "2de13d18-52d1-4c4c-b0d0-9c069bd23e29"
+            },
+            {
+                "account_name": "Main",
+                "profile_name": "Coaction922594259788",
+                "account_number": "922594259788",
+                "region": ["us-east-1", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "5ec87a20-3535-40ba-a4e8-9541ffccfaee"
+            },
+            {
+                "account_name": "Sandbox",
+                "profile_name": "Coaction513847850768",
+                "account_number": "513847850768",
+                "region": ["us-east-1", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "499ed3f7-a0bd-4eb3-9a0a-18cec5419d39"
+            }
+        ]
+    },
+    "cr": {
+        "name": "Crate & Barrel",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "CrateBarrel154750080114",
+                "account_number": "154750080114",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "27baa026-4ee2-48f9-8b75-9be8ab0ec544"
+            },
+            {
+                "account_name": "2WA Ecommerce",
+                "profile_name": "CrateBarrel060480092206",
+                "account_number": "060480092206",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "ca-central-1"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "eb6b4821-da9c-48af-a972-b06a4c85fe79"
+            },
+            {
+                "account_name": "Sandbox2W",
+                "profile_name": "CrateBarrel483166904471",
+                "account_number": "483166904471",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "3e04dd14-585d-4c3d-887f-b1da1c3f41e7"
+            }
+        ]
+    },
+    "cy": {
+        "name": "CypherWorx",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "Main",
+                "profile_name": "CypherWorx372356060901",
+                "account_number": "372356060901",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "26ffb536-3d6c-4005-89a8-cdb4bf43940e"
+            },
+            {
+                "account_name": "MPA",
+                "profile_name": "CypherWorx172652411787",
+                "account_number": "172652411787",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6c0bf435-c284-4dbb-81c7-6107b653e4d9"
+            }
+        ]
+    },
+    "ed": {
+        "name": "Edmund Optics",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "Edmund Optics Main account",
+                "profile_name": "EdmundOptics269180092429",
+                "account_number": "269180092429",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "d054ef79-3919-490e-9eb2-ff2174149e7d"
+            },
+            {
+                "account_name": "MPA",
+                "profile_name": "EdmundOptics314664085950",
+                "account_number": "314664085950",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "16e3ccf5-6300-4745-8a85-653601508d6c"
+            }
+        ]
+    },
+    "et": {
+        "name": "eTurns",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "eTurns826688785881",
+                "account_number": "826688785881",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "f9e6ac42-eb79-4113-aab9-e8ab8aa9ea98"
+            },
+            {
+                "account_name": "2W",
+                "profile_name": "eTurns881862158299",
+                "account_number": "314664085950",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "37f3b527-e142-4e1e-883f-5d858b846f24"
+            }
+        ]
+    },
+    "fa": {
+        "name": "Fan Controlled Football",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "FanControlledFootball249315949108",
+                "account_number": "249315949108",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "b680a7ed-2abf-48c4-a64f-2d91bee8707e"
+            }
+        ]
+    },
+    "ga": {
+        "name": "Gas Station TV",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA Admin",
+                "profile_name": "GasStationTV322672181427",
+                "account_number": "322672181427",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "536912e7-06cc-44f7-a6ed-dca102d00363"
+            }
+        ]
+    },
+    "gr": {
+        "name": "GreenFirst Forest Products",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "GreenFirst Forest Products",
+                "profile_name": "GFFP831804927786",
+                "account_number": "831804927786",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7790c2b7-832d-4253-9285-db17e92ef96d"
+            },
+            {
+                "account_name": "MPA",
+                "profile_name": "GFFP998921679217",
+                "account_number": "998921679217",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "36dc7f4c-ec4b-4caa-97b7-e3357b45400b"
+            }
+        ]
+    },
+    "in": {
+        "name": "International Air Transport  Association - IATA",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "Ciffasbar Prod",
+                "profile_name": "IATA964759469644",
+                "account_number": "964759469644",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "0c6eaf07-008f-4ca7-be56-cd0e3c14b2ba"
+            },
+            {
+                "account_name": "Ciffasbar Staging",
+                "profile_name": "IATA101794385822",
+                "account_number": "101794385822",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "47b0fd02-0af3-4a3a-9876-f993ad91cc21"
+            }
+        ]
+    },
+    "kr": {
+        "name": "Krispy Kreme",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "KrispyKreme265422736495",
+                "account_number": "265422736495",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "2e54588b-93a8-4ab5-967b-f1b64ef70d4c"
+            },
+            {
+                "account_name": "Marketing 2W",
+                "profile_name": "KrispyKreme544970321274",
+                "account_number": "544970321274",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "cef86ec0-444d-4bc5-b74d-43662f5ebb16"
+            },
+            {
+                "account_name": "Middleware 2W",
+                "profile_name": "KrispyKreme214288200076",
+                "account_number": "214288200076",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "cef507b6-2c63-442f-bba5-06223bf59f38"
+            },
+            {
+                "account_name": "Prod 2W",
+                "profile_name": "KrispyKreme222553885674",
+                "account_number": "222553885674",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "efacab46-c468-48d1-b2cb-9cefe78cef1d"
+            },
+            {
+                "account_name": "Sales 2W",
+                "profile_name": "KrispyKreme694550862475",
+                "account_number": "694550862475",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "9dac69bf-8bfd-4dea-8340-29294748af16"
+            },
+            {
+                "account_name": "Test 2WAdmin",
+                "profile_name": "KrispyKreme206003387266",
+                "account_number": "206003387266",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "cccc3c2b-a4b8-498b-97f3-5cfef7f576c8"
+            }
+        ]
+    },
+    "le": {
+        "name": "Lenovo",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "Lenovo161020536339",
+                "account_number": "161020536339",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "ap-northeast-1", "ap-southeast-1", "eu-central-1"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "a6dbe183-7b3e-452b-afd1-72857934a651"
+            },
+            {
+                "account_name": "LCE MS",
+                "profile_name": "Lenovo738478461433",
+                "account_number": "738478461433",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2", "ap-northeast-1", "ap-southeast-1", "eu-central-1"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "d186ee7c-935c-4c97-a4fc-39ebe25c070b"
+            }
+        ]
+    },
+    "mi": {
+        "name": "Michael Kors",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MK API",
+                "profile_name": "MichaelKors576585942279",
+                "account_number": "576585942279",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "038a3667-b083-4493-8e73-74d7d43b42ba",
+                "app_id_uri": "955cee1f-1faa-4cf4-b1eb-260f1261a77b"
+            },
+            {
+                "account_name": "MK ECOMDEV",
+                "profile_name": "MichaelKors984854570035",
+                "account_number": "984854570035",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "038a3667-b083-4493-8e73-74d7d43b42ba",
+                "app_id_uri": "fee6548d-24a6-4342-b60c-2f3b9bd16d52"
+            },
+            {
+                "account_name": "MK ECOMDV",
+                "profile_name": "MichaelKors610518096808",
+                "account_number": "610518096808",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "038a3667-b083-4493-8e73-74d7d43b42ba",
+                "app_id_uri": "50cd5154-7048-4fb7-bf7a-dc8caeb80a42"
+            }
+        ]
+    },
+    "ne": {
+        "name": "Neighborly",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "Neighborly135866356148",
+                "account_number": "135866356148",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7e6175e9-a950-4f90-80f3-d842647fe03e"
+            },
+            {
+                "account_name": "Audit",
+                "profile_name": "Neighborly281792032418",
+                "account_number": "281792032418",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6b31fbe6-2738-4ce8-b30e-a4daac77ae83"
+            },
+            {
+                "account_name": "CoreServices",
+                "profile_name": "Neighborly150438470272",
+                "account_number": "150438470272",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "bc0c43a5-2f07-4081-8cf7-153267cf3667"
+            },
+            {
+                "account_name": "CorporateProd",
+                "profile_name": "Neighborly708311264215",
+                "account_number": "708311264215",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "5ecf40da-9b50-4d4c-b3fe-b08802c77125"
+            },
+            {
+                "account_name": "CorporateSandbox",
+                "profile_name": "Neighborly343259214268",
+                "account_number": "343259214268",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6aa2be12-1e1c-4390-9f11-71c1ddd28ed6"
+            },
+            {
+                "account_name": "DataAnalyticsNonprod",
+                "profile_name": "Neighborly388376058248",
+                "account_number": "388376058248",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "87472265-5e4f-438a-bf57-9aa67a91ce19"
+            },
+            {
+                "account_name": "DataAnalyticsProd",
+                "profile_name": "Neighborly313899312729",
+                "account_number": "313899312729",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "37f2229e-3528-4008-92ec-a15be6a1de2f"
+            },
+            {
+                "account_name": "DigitalDevelopment",
+                "profile_name": "Neighborly469082217927",
+                "account_number": "469082217927",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "1f231eeb-dea9-4e20-a2fb-0cfa90a3a2ef"
+            },
+            {
+                "account_name": "DigitalProd",
+                "profile_name": "Neighborly620971565338",
+                "account_number": "620971565338",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "4943afb6-56e4-47db-980d-7934f9b15f80"
+            },
+            {
+                "account_name": "DigitalQA",
+                "profile_name": "Neighborly630205603498",
+                "account_number": "630205603498",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "24633367-503b-4f0c-8378-af3832496529"
+            },
+            {
+                "account_name": "DigitalSandbox",
+                "profile_name": "Neighborly145486738040",
+                "account_number": "145486738040",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "4a814095-f798-4fbb-a6a5-7c8c1f7589d4"
+            },
+            {
+                "account_name": "FSMDevelopment",
+                "profile_name": "Neighborly359667321592",
+                "account_number": "359667321592",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7b763f6c-dbb3-4146-b57e-d0937a7d05bd"
+            },
+            {
+                "account_name": "FSMProd",
+                "profile_name": "Neighborly742343384113",
+                "account_number": "742343384113",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "ead81c2a-e493-41bf-90fd-5ba1628e0485"
+            },
+            {
+                "account_name": "FSMQA",
+                "profile_name": "Neighborly843694397375",
+                "account_number": "843694397375",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "742dfa49-dc15-4f16-a8c8-e9acdf6f4fb4"
+            },
+            {
+                "account_name": "FSMSandbox",
+                "profile_name": "Neighborly552300672585",
+                "account_number": "552300672585",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "649a4beb-9f3a-4553-92c8-1e092085c1e4"
+            },
+            {
+                "account_name": "LogArchive",
+                "profile_name": "Neighborly140251944211",
+                "account_number": "140251944211",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "25800c4c-11a7-457d-adbb-3beb1d3cd076"
+            },
+            {
+                "account_name": "Networking",
+                "profile_name": "Neighborly784938688561",
+                "account_number": "784938688561",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "f583efb0-f31f-4b8c-86e3-c5abe6bbb7dc"
+            },
+            {
+                "account_name": "SharedServicesDevelopment",
+                "profile_name": "Neighborly358695950864",
+                "account_number": "358695950864",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "eb5fe360-6753-4a67-9d1e-554605732445"
+            },
+            {
+                "account_name": "SharedServicesProd",
+                "profile_name": "Neighborly857842679763",
+                "account_number": "857842679763",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "0a6bbb98-c552-40c8-bb69-84ff982a901d"
+            },
+            {
+                "account_name": "SharedServicesQA",
+                "profile_name": "Neighborly493341156677",
+                "account_number": "493341156677",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "9de533f7-7e66-484c-a4ec-693f9f3d0ded"
+            },
+            {
+                "account_name": "SharedServicesSandbox",
+                "profile_name": "Neighborly965302211377",
+                "account_number": "965302211377",
+                "region": ["us-east-2", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "07859f9f-59d6-451d-b869-329ab308b97f"
+            }
+        ]
+    },
+    "pa": {
+        "name": "Pathward",
+        "login": "sso",
+        "start_url": "https://d-92677ba4ac.awsapps.com/start",
+        "sso_region": "us-west-2",
+        "role_name": "2nd-Watch-PowerUser",
+        "profiles": [
+            {
+                "account_name": "pathward-aws-common-services",
+                "account_number": "801420401379",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-edp-dev",
+                "account_number": "899655396578",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-edp-pre-prod",
+                "account_number": "574210333749",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-edp-prod",
+                "account_number": "916668926827",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-edp-qa",
+                "account_number": "267723598036",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-finance-dev",
+                "account_number": "130650826489",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-finance-pre-prod",
+                "account_number": "924591250560",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-finance-prod",
+                "account_number": "427322194248",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-finance-qa",
+                "account_number": "123741411386",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-lending-dev",
+                "account_number": "907611834017",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-lending-pre-prod",
+                "account_number": "271303775735",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-lending-prod",
+                "account_number": "110457576704",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-lending-qa",
+                "account_number": "846856005637",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-payment-dev",
+                "account_number": "567012589814",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-payment-pre-prod",
+                "account_number": "514557105875",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-payment-prod",
+                "account_number": "000191458717",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-payment-qa",
+                "account_number": "472485013655",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-revenue-dev",
+                "account_number": "409433916330",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-revenue-pre-prod",
+                "account_number": "428647019649",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-revenue-prod",
+                "account_number": "241493660675",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-revenue-qa",
+                "account_number": "792418896482",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-dev",
+                "account_number": "154858410386",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-pre-prod",
+                "account_number": "161158414822",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-prod",
+                "account_number": "661087311575",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-qa",
+                "account_number": "887144397166",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-sensitive-dev",
+                "account_number": "320844611858",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-sensitive-pre-prod",
+                "account_number": "176908402423",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-sensitive-prod",
+                "account_number": "863068329663",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-shared-services-sensitive-qa",
+                "account_number": "686216157624",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-tax-dev",
+                "account_number": "237200711721",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-tax-pre-prod",
+                "account_number": "793624104138",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-tax-prod",
+                "account_number": "251389675330",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-aws-tax-qa",
+                "account_number": "695769581195",
+                "region": ["us-east-1", "us-west-2"]
+            },
+            {
+                "account_name": "pathward-cloud-admin-sandbox",
+                "account_number": "240229230844",
+                "region": ["us-east-1", "us-west-2"]
+            }
+        ]
+    },
+    "ra": {
+        "name": "Rayonier AM",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MCS RYAM",
+                "profile_name": "RayonierAM278749457424",
+                "account_number": "278749457424",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "4f2565e9-d66d-40e8-9a7c-1ee749c2a1c1"
+            },
+            {
+                "account_name": "RYAM Automation",
+                "profile_name": "RayonierAM054685366604",
+                "account_number": "054685366604",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "5edddcdf-742e-4f4d-955d-c3e27e449573"
+            },
+            {
+                "account_name": "RYAM ECPPayer",
+                "profile_name": "RayonierAM653633123181",
+                "account_number": "653633123181",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6dc27032-7720-44ae-b1c6-b8d0f7350757"
+            }
+        ]
+    },
+    "se": {
+        "name": "Seattle Cancer Care Alliance",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "DataScience DEV 2W",
+                "profile_name": "SCCA525609505220",
+                "account_number": "525609505220",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "4855c3d5-2b1f-47a4-a1d1-4b4e5dc9836f"
+            },
+            {
+                "account_name": "Dev 2W",
+                "profile_name": "SCCA476500400790",
+                "account_number": "476500400790",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "a7a96e56-b0aa-4e03-a6a8-709c322b2b6b"
+            },
+            {
+                "account_name": "Prod 2W",
+                "profile_name": "SCCA842180510280",
+                "account_number": "842180510280",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "f2a6acfd-18ad-43dd-bff0-6ea314ecefca"
+            }
+        ]
+    },
+    "si": {
+        "name": "SiriusPoint",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "SiriusPoint194594363990",
+                "account_number": "194594363990",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "666b89f7-5298-4efb-99b4-caea801fa0fb"
+            },
+            {
+                "account_name": "Corp Functions Dev",
+                "profile_name": "SiriusPoint195596133312",
+                "account_number": "195596133312",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "2cd6d4c8-0f5a-4fc9-92de-896613896695"
+            },
+            {
+                "account_name": "Corp Functions Prod",
+                "profile_name": "SiriusPoint937770356301",
+                "account_number": "937770356301",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "44aa7a97-8c85-4503-9eb3-995dffd6e090"
+            },
+            {
+                "account_name": "Corp Functions Test",
+                "profile_name": "SiriusPoint287382724573",
+                "account_number": "287382724573",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "ce52aed1-e814-459c-b2eb-169fe00b2df2"
+            },
+            {
+                "account_name": "Corp Functions UAT",
+                "profile_name": "SiriusPoint981889167713",
+                "account_number": "981889167713",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "1cf46dea-0450-47e0-8863-f6a25285a60b"
+            },
+            {
+                "account_name": "DevOps Sandbox",
+                "profile_name": "SiriusPoint041717511598",
+                "account_number": "041717511598",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "db27e838-cc5a-442c-901d-3739669b9dbf"
+            },
+            {
+                "account_name": "Ent Data Warehouse Dev",
+                "profile_name": "SiriusPoint702005347153",
+                "account_number": "702005347153",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "8e97f9d4-589f-48ff-9c79-a2a7506373bf"
+            },
+            {
+                "account_name": "Ent Data Warehouse Dev New",
+                "profile_name": "SiriusPoint892402072008",
+                "account_number": "892402072008",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "eec756ca-30a0-4340-880e-76d0d9d66003"
+            },
+            {
+                "account_name": "Ent Data Warehouse Prod",
+                "profile_name": "SiriusPoint762024483592",
+                "account_number": "762024483592",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "d18275a8-0e5b-4b1c-afdd-24cd9bdcc474"
+            },
+            {
+                "account_name": "Ent Data Warehouse Sandbox",
+                "profile_name": "SiriusPoint149733223368",
+                "account_number": "149733223368",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "428dfe51-8124-4fe3-9914-c69b0884e187"
+            },
+            {
+                "account_name": "Ent Data Warehouse Test",
+                "profile_name": "SiriusPoint322815011754",
+                "account_number": "322815011754",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "9d082234-2f05-4292-b3e4-cade72fa5c39"
+            },
+            {
+                "account_name": "Ent Data Warehouse UAT",
+                "profile_name": "SiriusPoint729412269091",
+                "account_number": "729412269091",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "ff28b6e4-b3e1-464d-92bc-2509729c4c4b"
+            },
+            {
+                "account_name": "Ent Service UAT",
+                "profile_name": "SiriusPoint247347815500",
+                "account_number": "247347815500",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "0b720cee-0891-4c74-be63-0306db808165"
+            },
+            {
+                "account_name": "Ent Services Dev",
+                "profile_name": "SiriusPoint669655183970",
+                "account_number": "669655183970",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7a5396f6-b5f7-4978-a343-27d90e99d761"
+            },
+            {
+                "account_name": "Ent Services Prod",
+                "profile_name": "SiriusPoint552117716682",
+                "account_number": "552117716682",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "5ecf4fef-3f89-47c7-8cf4-d0f5afe064a4"
+            },
+            {
+                "account_name": "Ent Services Test",
+                "profile_name": "SiriusPoint159255921464",
+                "account_number": "159255921464",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "41b24490-da46-4a81-9e43-757cad48591c"
+            },
+            {
+                "account_name": "IMG Dev",
+                "profile_name": "SiriusPoint898296544503",
+                "account_number": "898296544503",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6ed11f70-0531-4f76-ae6a-f370747b770d"
+            },
+            {
+                "account_name": "IMG Networking Prod",
+                "profile_name": "SiriusPoint367469021992",
+                "account_number": "367469021992",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "3c120845-c719-4e88-b9e6-5dc63b34fd2d"
+            },
+            {
+                "account_name": "IMG Prod",
+                "profile_name": "SiriusPoint958367330758",
+                "account_number": "958367330758",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "361307c0-88f4-4ed7-91bc-5b03d01ce849"
+            },
+            {
+                "account_name": "IMG Shared Services Prod",
+                "profile_name": "SiriusPoint028093328477",
+                "account_number": "028093328477",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "19093ba8-7261-4244-b704-3aa86ac471d4"
+            },
+            {
+                "account_name": "IMG Test",
+                "profile_name": "SiriusPoint088351689341",
+                "account_number": "088351689341",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "2b99c6d5-6659-453f-9e6d-1191eb73b660"
+            },
+            {
+                "account_name": "IT Dev",
+                "profile_name": "SiriusPoint352181128724",
+                "account_number": "352181128724",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "debb663a-5a86-4c0f-a5b9-bb598990a266"
+            },
+            {
+                "account_name": "IT Prod",
+                "profile_name": "SiriusPoint406121376959",
+                "account_number": "406121376959",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "ef48a7f1-bd04-459a-bf1b-ba523c753321"
+            },
+            {
+                "account_name": "IT Test",
+                "profile_name": "SiriusPoint219386296353",
+                "account_number": "219386296353",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "329935b1-d8fb-4df5-a842-6d47c9115dbb"
+            },
+            {
+                "account_name": "IT UAT",
+                "profile_name": "SiriusPoint619382920289",
+                "account_number": "619382920289",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "22143cc8-55ef-48f4-87d8-0e3e18c84899"
+            },
+            {
+                "account_name": "Networking Prod",
+                "profile_name": "SiriusPoint368118245337",
+                "account_number": "368118245337",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7c2d9010-571b-4cbe-afe6-96d80dd837e4"
+            },
+            {
+                "account_name": "Reinsurance Dev",
+                "profile_name": "SiriusPoint318927487258",
+                "account_number": "318927487258",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "da326e8d-8f96-4776-b5dd-8d3bbe341cef"
+            },
+            {
+                "account_name": "Reinsurance Prod",
+                "profile_name": "SiriusPoint313939983381",
+                "account_number": "313939983381",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "044bf814-aeea-4165-adac-04f83b5b050d"
+            },
+            {
+                "account_name": "Reinsurance Test",
+                "profile_name": "SiriusPoint536794170651",
+                "account_number": "536794170651",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "ac935a9f-d8c8-4d26-9c0f-097e1ad95806"
+            },
+            {
+                "account_name": "Reinsurance UAT",
+                "profile_name": "SiriusPoint758595336978",
+                "account_number": "758595336978",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "5d2fbd6a-7bf3-486d-8796-b5a92f751f08"
+            },
+            {
+                "account_name": "Shared Services Prod",
+                "profile_name": "SiriusPoint135946967657",
+                "account_number": "135946967657",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "f9f4c0bc-feda-4a2f-bd99-f8eddd0dd5c3"
+            }
+        ]
+    },
+    "sy": {
+        "name": "Symetra",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "Tier0",
+                "profile_name": "Symetra238823745446",
+                "account_number": "238823745446",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "84b42243-8b1e-4061-ae31-6f0342473d9a"
+            },
+            {
+                "account_name": "Mode1 - NP",
+                "profile_name": "Symetra049614664661",
+                "account_number": "049614664661",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "f33b003a-d7f3-417f-800f-8ffb4225dda8"
+            },
+            {
+                "account_name": "Mode1 - PRD",
+                "profile_name": "Symetra187776328687",
+                "account_number": "187776328687",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "a12014dc-3b60-465a-873c-b08aed623cfa"
+            },
+            {
+                "account_name": "Mode2 - DEV",
+                "profile_name": "Symetra359158632008",
+                "account_number": "359158632008",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "6a102066-4aba-490d-9027-f9cfbdd73047"
+            },
+            {
+                "account_name": "Mode2 - INT",
+                "profile_name": "Symetra907990685781",
+                "account_number": "907990685781",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "bb4b14bb-44d3-453b-add8-a79f0a05a46d"
+            },
+            {
+                "account_name": "Mode2 - PRD",
+                "profile_name": "Symetra224822315518",
+                "account_number": "224822315518",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "b8caf27d-9cf5-44c9-9b06-1d84dc233830"
+            },
+            {
+                "account_name": "HIPPA - Dev",
+                "profile_name": "Symetra380683384545",
+                "account_number": "380683384545",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "bcc7feef-832c-49fb-b918-842b4023d2e9"
+            },
+            {
+                "account_name": "HIPPA - Int",
+                "profile_name": "Symetra833769084479",
+                "account_number": "833769084479",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "c2eea966-e52e-407b-bdf3-3b737e604f07"
+            },
+            {
+                "account_name": "HIPPA - Prd",
+                "profile_name": "Symetra504968194411",
+                "account_number": "504968194411",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "2f15f08d-1b19-4682-977d-02105f25658e"
+            },
+            {
+                "account_name": "CyberArk - Prd",
+                "profile_name": "Symetra219361765369",
+                "account_number": "219361765369",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "254b91f3-ec6c-42e2-847b-653705e42dca"
+            },
+            {
+                "account_name": "CyberArk - NP",
+                "profile_name": "Symetra574245509086",
+                "account_number": "574245509086",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "e58eadf5-22b7-40ba-8b2f-2ec734912961"
+            },
+            {
+                "account_name": "EUC - NP",
+                "profile_name": "Symetra187927967475",
+                "account_number": "187927967475",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "60898804-c088-4130-9767-2a08d70ee62c"
+            },
+            {
+                "account_name": "EUC - Prd",
+                "profile_name": "Symetra382242775897",
+                "account_number": "382242775897",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "ab1be75d-1928-4d98-9f95-e5a3db51be82"
+            },
+            {
+                "account_name": "SwiftCloud DevOps Dev",
+                "profile_name": "Symetra308701666906",
+                "account_number": "308701666906",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "d8ecabf5-4f2b-4048-8866-75b927034469"
+            },
+            {
+                "account_name": "SwiftCloud DevOps Int",
+                "profile_name": "Symetra731887935032",
+                "account_number": "731887935032",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "b3185b32-9bf7-43a0-9a3c-8cea3e42f15a"
+            },
+            {
+                "account_name": "SwiftCloud DevOps Prd",
+                "profile_name": "Symetra875633491806",
+                "account_number": "875633491806",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "6c313dcd-7a53-4b36-9e08-3bb8132fa232"
+            },
+            {
+                "account_name": "SwiftCloud Leo Dev",
+                "profile_name": "Symetra301609943429",
+                "account_number": "301609943429",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "92bed2f9-7de3-488b-8da8-0c46235a0a79"
+            },
+            {
+                "account_name": "SwiftCloud Leo Int",
+                "profile_name": "Symetra782771878128",
+                "account_number": "782771878128",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "398a85d0-83b6-4fdc-8c85-2fe407451c2d"
+            },
+            {
+                "account_name": "SwiftCloud ",
+                "profile_name": "Symetra",
+                "account_number": "",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": ""
+            },
+            {
+                "account_name": "SwiftCloud ContactCenter Dev",
+                "profile_name": "Symetra810948784786",
+                "account_number": "810948784786",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "9ed1649a-29f8-4fcd-b2fd-c3de62bc12ec"
+            },
+            {
+                "account_name": "SwiftCloud ContactCenter Int",
+                "profile_name": "Symetra520159488260",
+                "account_number": "520159488260",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "3d3b72d4-7f75-480a-9d9c-8824de4111bf"
+            },
+            {
+                "account_name": "SwiftCloud PASR Dev",
+                "profile_name": "Symetra118085578789",
+                "account_number": "118085578789",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "f8401dc8-0f45-4269-8872-2bc666d061b8"
+            },
+            {
+                "account_name": "SwiftCloud PEx Dev",
+                "profile_name": "Symetra153937143779",
+                "account_number": "153937143779",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "bce99fe6-c3bc-423c-adb9-37e6ee6957e4"
+            },
+            {
+                "account_name": "SwiftCloud PEx Int",
+                "profile_name": "Symetra580717149896",
+                "account_number": "580717149896",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "6cc04198-32a4-4de5-b21b-2722b63f598b"
+            },
+            {
+                "account_name": "SwiftCloud BSD Dev",
+                "profile_name": "Symetra624313876423",
+                "account_number": "624313876423",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "9a8ade1f-4f89-4c76-a892-c2c308580ae2"
+            },
+            {
+                "account_name": "SwiftCloud Leo Prd",
+                "profile_name": "Symetra291994354727",
+                "account_number": "291994354727",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "605b32a6-50dc-4f7b-9c49-6ffbfe59edbf"
+            },
+            {
+                "account_name": "SwiftCloud PEx Prd",
+                "profile_name": "Symetra973063240846",
+                "account_number": "973063240846",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "f3abe45e-53d7-4596-a78c-9895330ebe5a"
+            },
+            {
+                "account_name": "SwiftCloud ContactCenter Prd",
+                "profile_name": "Symetra770056792498",
+                "account_number": "770056792498",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "17eb6adb-19ba-4624-8841-c23373a30d56"
+            },
+            {
+                "account_name": "SwiftCloud ICAP Dev",
+                "profile_name": "Symetra951041368678",
+                "account_number": "951041368678",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "9ae073bf-d02e-4943-8482-ad29e10a1319"
+            },
+            {
+                "account_name": "SwiftCloud ICAP Int",
+                "profile_name": "Symetra258225895978",
+                "account_number": "258225895978",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "2e50e46c-5cf9-4d3a-bd79-a6a0bced453c"
+            },
+            {
+                "account_name": "SwiftCloud ICAP Prd",
+                "profile_name": "Symetra912645735714",
+                "account_number": "912645735714",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "90c0125d-33e5-4ee0-b121-d5fd160f0a79"
+            },
+            {
+                "account_name": "SwiftCloud ICAPAPI Dev",
+                "profile_name": "Symetra890213090742",
+                "account_number": "890213090742",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "964ffcbf-4c46-472f-bb1d-94b964e235b4"
+            },
+            {
+                "account_name": "SwiftCloud ICAPAPI Int",
+                "profile_name": "Symetra452742252005",
+                "account_number": "452742252005",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "8497cedf-4dca-46cc-a75e-d586a88249c1"
+            },
+            {
+                "account_name": "SwiftCloud ICAPAPI Prd",
+                "profile_name": "Symetra809503070552",
+                "account_number": "809503070552",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "65b361c7-2cab-4cd6-b61f-1a71705724e8",
+                "app_id_uri": "00fcd430-fd5a-4eec-990d-dabf8189d900"
+            }
+        ]
+    },
+    "ss": {
+        "name": "Sysco Corporation",
+        "login": "sso",
+        "start_url": "https://sysco-sso.awsapps.com/start",
+        "sso_region": "us-east-1",
+        "role_name": "McsSupport",
+        "profiles": [
+            {
+                "account_name": "AD-Services",
+                "account_number": "587986540577",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "AD-Services-EU",
+                "account_number": "926539494993",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "AD-Services-NP",
+                "account_number": "301429199719",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Basis",
+                "account_number": "804990183447",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "BPC-US-ETL",
+                "account_number": "946344491085",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "BPC-US-ETL-NP",
+                "account_number": "932436841987",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "BPCEU-NP",
+                "account_number": "781861004751",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Centrally-Managed",
+                "account_number": "707468524404",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "CyberSec",
+                "account_number": "326626592956",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "CyberSec-EU",
+                "account_number": "230080233060",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "CyberSec-NP",
+                "account_number": "618707265703",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "DIM-A2A",
+                "account_number": "572547632674",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "DIM-A2A-NP",
+                "account_number": "596205843786",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "DIM-DataSync",
+                "account_number": "481241272663",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "DIM-DataSync-NonProd",
+                "account_number": "484728675566",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "EIM",
+                "account_number": "470323947640",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "EIM-NP",
+                "account_number": "099476554548",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FreightMgmtPortal",
+                "account_number": "951277705039",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FreightMgmtPortal-NP",
+                "account_number": "772117473885",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FreshPoint",
+                "account_number": "619863653711",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Freshpoint-BT",
+                "account_number": "053428694428",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Freshpoint-BT-NP",
+                "account_number": "180461023513",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FreshPoint-NP",
+                "account_number": "940144820668",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FTR-CoreFinancials",
+                "account_number": "902863833539",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FTR-CoreFinancials-NP",
+                "account_number": "305443354132",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FTR-Robotics",
+                "account_number": "690002505648",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "FTR-Robotics-NonProd",
+                "account_number": "366660147942",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "GRAIN",
+                "account_number": "027204925609",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "GRAIN-EU",
+                "account_number": "209261927533",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "GRAIN-EU-NP",
+                "account_number": "608756570184",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "GRAIN-NP",
+                "account_number": "045969618033",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Healthcare",
+                "account_number": "740457535784",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Healthcare-NP",
+                "account_number": "474241146231",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "ID-EU",
+                "account_number": "093968411650",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "ID-EU-NP",
+                "account_number": "005915983646",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "IDM",
+                "account_number": "642084586511",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "IDM-EU",
+                "account_number": "182478585118",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "IDM-NP",
+                "account_number": "006486291791",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "ImportsApp",
+                "account_number": "679288418037",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "ImportsApp-NP",
+                "account_number": "403432025122",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "LocalFlavor",
+                "account_number": "290378382140",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "LocalFlavor-NP",
+                "account_number": "149191316447",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "MDM-Platform",
+                "account_number": "641355987183",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "MDM-Platform-NP",
+                "account_number": "430210588497",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Merch-Platform",
+                "account_number": "483406420916",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Merchandising-Platform-NP",
+                "account_number": "623064507209",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "MerchCatman",
+                "account_number": "926383569375",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "ODI",
+                "account_number": "851869426924",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "ODI-NP",
+                "account_number": "782512261157",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Pallas",
+                "account_number": "698335769661",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "PCM",
+                "account_number": "246436917879",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "PCM-NP",
+                "account_number": "117613187320",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Prime",
+                "account_number": "109254241811",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Prime-NonProd",
+                "account_number": "848345576163",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "RPA-NP",
+                "account_number": "699237429155",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "SECURITY",
+                "account_number": "908318405952",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "SECURITY-EU-WEST-2",
+                "account_number": "599540560589",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "SEED-EDW",
+                "account_number": "052648356768",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "SEED-EU-HR-NP",
+                "account_number": "053940494612",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "SHAREDSERVICE",
+                "account_number": "117634630710",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "SHAREDSERVICE-NONPROD",
+                "account_number": "911149727616",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sygma",
+                "account_number": "288830371312",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco - Admin non-prod",
+                "account_number": "885523507357",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco - Admin Prod",
+                "account_number": "467936237394",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco - Guest Supply Non Prod",
+                "account_number": "607505244673",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco - Guest Supply Prod",
+                "account_number": "197835843520",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco-EU Ireland Non-Production",
+                "account_number": "526037781044",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco-EU Ireland Production",
+                "account_number": "624009189359",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Sysco360-NP",
+                "account_number": "051887157634",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Telcom",
+                "account_number": "042315554715",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "Telcom-NP",
+                "account_number": "224281655478",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "VendorBrokerTies",
+                "account_number": "620960056239",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "VRFS-CIP",
+                "account_number": "793896103605",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "VRFS-CIP-NP",
+                "account_number": "037874854206",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "VRT-Platform",
+                "account_number": "715699285167",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            },
+            {
+                "account_name": "VRT-Platform-NP",
+                "account_number": "280765966336",
+                "region": ["us-east-1", "us-east-2", "eu-west-1", "eu-west-2"]
+            }
+        ]
+    },
+    "ta": {
+        "name": "Taco Bell-Intl",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "MPA",
+                "profile_name": "TBIntl903791278313",
+                "account_number": "903791278313",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6669c3e7-3d2a-4327-b2c4-3d78b69835f6"
+            },
+            {
+                "account_name": "QA",
+                "profile_name": "TBIntl295873222398",
+                "account_number": "295873222398",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "f0ba509c-acd6-4398-be46-26bf5d6c093c"
+            },
+            {
+                "account_name": "Dev",
+                "profile_name": "TBIntl125505626781",
+                "account_number": "125505626781",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "c6b01a94-6607-435e-8a75-acbbea09a975"
+            },
+            {
+                "account_name": "TacoBellIntl",
+                "profile_name": "TBIntl904052094173",
+                "account_number": "904052094173",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "4e396e5e-214f-465a-814b-2892f55836fd"
+            }
+        ]
+    },
+    "us": {
+        "name": "US Plate Glass Insurance Company",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "US Plate MS Admin",
+                "profile_name": "USPlate185471771576",
+                "account_number": "185471771576",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "a20cbea8-28cd-403c-9ae4-9b4fc1cf15f5"
+            },
+            {
+                "account_name": "MPA",
+                "profile_name": "USPlate835818820760",
+                "account_number": "835818820760",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "9ff87c36-3ff3-4183-b60b-ac3268f8b365"
+            }
+        ]
+    },
+    "ut": {
+        "name": "Utilities International",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "internal",
+                "profile_name": "UtilIntl010949642540",
+                "account_number": "010949642540",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "75572fc2-2e74-4169-a543-73ad6aac0cae"
+            },
+            {
+                "account_name": "financial",
+                "profile_name": "UtilIntl124778240328",
+                "account_number": "124778240328",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "51a9fd48-6595-4799-b0c4-b6ffd229acb3"
+            },
+            {
+                "account_name": "Wapa",
+                "profile_name": "UtilIntl409793285578",
+                "account_number": "409793285578",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "ab1b1b5c-9758-4444-87be-cbdf00485c73"
+            },
+            {
+                "account_name": "customer-ElPaso",
+                "profile_name": "UtilIntl591720369555",
+                "account_number": "591720369555",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "d81a94b1-3be9-478d-a196-2902e161e604"
+            },
+            {
+                "account_name": "librarian",
+                "profile_name": "UtilIntl596683006098",
+                "account_number": "596683006098",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "6c269b98-74c1-4490-8724-bfb06d4ab8b9"
+            },
+            {
+                "account_name": "customers",
+                "profile_name": "UtilIntl640494380191",
+                "account_number": "640494380191",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "b3c35cad-347b-40c5-962d-8591cf1d5f7b"
+            },
+            {
+                "account_name": "customer-AustinEnergy",
+                "profile_name": "UtilIntl670035103958",
+                "account_number": "670035103958",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "d055151a-8978-4fbb-b6ca-9abd3a77472b"
+            },
+            {
+                "account_name": "shared-services",
+                "profile_name": "UtilIntl722963886105",
+                "account_number": "722963886105",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "70db8f1d-1e7b-4cb4-8f2f-f217de7f2b51"
+            },
+            {
+                "account_name": "customer-bhe",
+                "profile_name": "UtilIntl378850973661",
+                "account_number": "378850973661",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "b40ef666-4332-4ae5-8526-634211dd753a"
+            },
+            {
+                "account_name": "customer-CenterPointEnergy",
+                "profile_name": "UtilIntl631174679383",
+                "account_number": "631174679383",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "debcf93b-4788-4a5c-a2f2-37f618752ea7"
+            },
+            {
+                "account_name": "customer-ConsumersEnergy",
+                "profile_name": "UtilIntl003837565195",
+                "account_number": "003837565195",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "b079ddf2-6e3f-490e-9f68-4ab1bae74f22"
+            },
+            {
+                "account_name": "customer-otp",
+                "profile_name": "UtilIntl161742078190",
+                "account_number": "161742078190",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "2bf34299-2094-4de2-99da-c395b892d603"
+            },
+            {
+                "account_name": "customer-pge",
+                "profile_name": "UtilIntl227853323018",
+                "account_number": "227853323018",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "e48e648f-72f0-4742-b999-3893c6388ace"
+            },
+            {
+                "account_name": "customer-pseg",
+                "profile_name": "UtilIntl467189845498",
+                "account_number": "467189845498",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "4070eb9c-a2c4-4b86-93bb-4082d6a0d367"
+            },
+            {
+                "account_name": "UII_Test_Account",
+                "profile_name": "UtilIntl288453765162",
+                "account_number": "288453765162",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "aab084b0-9c8d-4369-8d95-a3af31bfab81"
+            }
+        ]
+    },
+    "vi": {
+        "name": "Visibility Software, LLC",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "Visibility 2W",
+                "profile_name": "Visibility841746326269",
+                "account_number": "841746326269",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "7e4e092c-86e1-4204-a859-e6236eda1592"
+            },
+            {
+                "account_name": "MPA",
+                "profile_name": "Visibility027290539384",
+                "account_number": "027290539384",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "8242a0a9-c415-4206-be39-06637ad2817a",
+                "app_id_uri": "febe6beb-d20d-4958-937e-c9c134f9f4a6"
+            }
+        ]
+    },
+    "vn": {
+        "name": "VNS Health",
+        "login": "aal",
+        "profiles": [
+            {
+                "account_name": "Dev",
+                "profile_name": "VNS394721647414",
+                "account_number": "394721647414",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "aceaf30e-b195-4e20-bae3-bd8e3b91c85d"
+            },
+            {
+                "account_name": "MSO",
+                "profile_name": "VNS765697202555",
+                "account_number": "765697202555",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "b070b5e4-62e6-4d57-bd5e-5a1e8941217d"
+            },
+            {
+                "account_name": "Production",
+                "profile_name": "VNS387721966484",
+                "account_number": "387721966484",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "7d0b99c2-62d9-4194-bee2-c9bbd6e527d6"
+            },
+            {
+                "account_name": "Regulated",
+                "profile_name": "VNS059317571093",
+                "account_number": "059317571093",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "91478152-34df-41ec-8394-669603e2cc46"
+            },
+            {
+                "account_name": "Sandbox",
+                "profile_name": "VNS173082462933",
+                "account_number": "173082462933",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "563af4f2-396e-4276-9cd1-7c5894377e9a"
+            },
+            {
+                "account_name": "Shared Services",
+                "profile_name": "VNS330383299209",
+                "account_number": "330383299209",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "d04b1a9f-a5a1-4bf3-a671-f4335cf804e9"
+            },
+            {
+                "account_name": "Test",
+                "profile_name": "VNS498214724335",
+                "account_number": "498214724335",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "f5e1cf98-63f7-47fe-8611-e6de77162a81"
+            },
+            {
+                "account_name": "Transit",
+                "profile_name": "VNS643066205191",
+                "account_number": "643066205191",
+                "region": ["us-east-1", "us-east-2", "us-west-1", "us-west-2"],
+                "tenant_id": "d38bbf00-78ed-4dd8-a065-ba61877b4f50",
+                "app_id_uri": "63935f3f-2d93-43d7-bc65-66be67ce48cb"
+            }
+        ]
+    }
+}
