@@ -61,9 +61,9 @@ def main(clients):
         client_choices.append(f'{key} {value["name"]}')
 
     resources_dict = {
-        '1': 'EC2 Old Snapshots',
-        '2': 'Old EC2 Image',
-        '3': 'EC2 Image Not Associated',
+        '1': 'Old EC2 Image',
+        '2': 'EC2 Image Not Associated',
+        '3': 'EC2 Old Snapshots',
         '4': 'Unattached Elastic IPs',
         '5': 'Unattached EBS Volumes',
         '6': 'RDS Old Snapshots'
@@ -137,9 +137,9 @@ def main(clients):
             logger.info(f'\nExiting application.')
             sys.exit(0)
 
-        process_result, ips, images, snapshots, volumes, rds_snaps = pc.process_clients(clients_dict, client_keys,
-                                                                                        resource_keys, resources_dict,
-                                                                                        dry_run, run_date_time, logger)
+        process_result, clients_not_logged_in, unauthorized, ips, images, \
+            snapshots, volumes, rds_snaps, = pc.process_clients(clients_dict, client_keys, resource_keys,
+                                                                resources_dict, dry_run, run_date_time, logger)
 
         if process_result == 1:
 
@@ -152,6 +152,7 @@ def main(clients):
                       'Resource Deletion Result', ok_button='Exit')
         else:
 
+            # TODO: summary of accounts logged in/unauthorized
             # At least one login was successful; displays any logins that did not succeed
             logger.info(f'\n{end_msg}'
                         f'\n\nSummary:'

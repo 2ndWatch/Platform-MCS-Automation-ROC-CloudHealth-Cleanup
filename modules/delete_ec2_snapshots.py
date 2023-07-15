@@ -96,4 +96,4 @@ def delete_snapshots(ec2_client, client_name, region_name, resource_name, dry_ru
         os.remove(f'{client_name}_{run_date_time}/{resource_ids_file_name}')
         logger.info('All snapshots deleted. Snapshots file removed.')
 
-    return snapshots_deleted, error_ids
+    return snapshots_deleted
