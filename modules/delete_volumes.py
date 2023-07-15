@@ -39,6 +39,7 @@ def delete_volume(ec2_client, volume_id, dry_run, logger):
 
 def delete_volumes(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
     resource_ids_file_name = f'{client_name} {resource_name}.txt'
+    deleted_ids_file_name = f'{client_name} {resource_name} deleted.txt'
     volumes_deleted = 0
 
     # Copy the resource ids file if a copy doesn't already exist
@@ -65,10 +66,13 @@ def delete_volumes(ec2_client, client_name, region_name, resource_name, dry_run,
             volumes_to_delete.append(volume)
     if volumes_to_delete:
         logger.info(f'\nDeleting {len(volumes_to_delete)} volumes...')
+        file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
         for vol_to_delete in volumes_to_delete:
             if delete_volume(ec2_client, vol_to_delete, dry_run, logger):
                 volumes_deleted += 1
+                file.write(vol_to_delete + '\n')
                 volumes_list.remove(vol_to_delete)
+        file.close()
 
     logger.info(f'\nNumber of volumes deleted: {volumes_deleted}')
     logger.info(f'Number of remaining volumes: {len(volumes_list)}')

@@ -77,6 +77,7 @@ def delete_cluster_snapshot(rds_client, snapshot_id, dry_run, logger):
 
 def delete_snapshots(rds_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
     resource_ids_file_name = f'{client_name} {resource_name}.txt'
+    deleted_ids_file_name = f'{client_name} {resource_name} deleted.txt'
     snapshots_deleted = 0
 
     # Copy the resource ids file if a copy doesn't already exist
@@ -122,16 +123,22 @@ def delete_snapshots(rds_client, client_name, region_name, resource_name, dry_ru
     else:
         if rds_snapshots_to_delete:
             logger.info(f'\nDeleting {len(rds_snapshots_to_delete)} RDS snapshots...')
+            file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
             for snap_to_delete in rds_snapshots_to_delete:
                 if delete_db_snapshot(rds_client, snap_to_delete, dry_run, logger):
                     snapshots_deleted += 1
+                    file.write(snap_to_delete + '\n')
                     snapshots_list.remove(snap_to_delete)
+            file.close()
         if aurora_snapshots_to_delete:
             logger.info(f'\nDeleting {len(aurora_snapshots_to_delete)} Aurora snapshots...')
+            file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
             for snap_to_delete in aurora_snapshots_to_delete:
                 if delete_cluster_snapshot(rds_client, snap_to_delete, dry_run, logger):
                     snapshots_deleted += 1
+                    file.write(snap_to_delete + '\n')
                     snapshots_list.remove(snap_to_delete)
+            file.close()
 
     logger.info(f'\nNumber of snapshots deleted: {snapshots_deleted}')
     logger.info(f'Number of remaining snapshots: {len(snapshots_list)}')
