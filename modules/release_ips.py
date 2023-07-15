@@ -40,6 +40,7 @@ def release_ip(ec2_client, ip, dry_run, logger):
 def release_ips(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
     resource_ids_file_name = f'{client_name} {resource_name}.txt'
     deleted_ids_file_name = f'{client_name} {resource_name} deleted.txt'
+    error_ids_file_name = f'{client_name} {resource_name} errors.txt'
     ips_released = 0
 
     # Copy the resource ids file if a copy doesn't already exist
@@ -66,13 +67,19 @@ def release_ips(ec2_client, client_name, region_name, resource_name, dry_run, ru
             ips_to_release.append(ip)
     if ips_to_release:
         logger.info(f'\nReleasing {len(ips_to_release)} IPs...')
-        file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
+        del_file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
+        err_file = open(f'{client_name}_{run_date_time}/{error_ids_file_name}', 'a')
+        errors_list = [line.strip() for line in err_file]
         for ip_to_release in ips_to_release:
-            if release_ip(ec2_client, ip_to_release, dry_run, logger):
-                ips_released += 1
-                file.write(ip_to_release + '\n')
-                ips_list.remove(ip_to_release)
-        file.close()
+            if ip_to_release not in errors_list:
+                if release_ip(ec2_client, ip_to_release, dry_run, logger):
+                    ips_released += 1
+                    del_file.write(ip_to_release + '\n')
+                    ips_list.remove(ip_to_release)
+                else:
+                    err_file.write(ip_to_release + '\n')
+        del_file.close()
+        err_file.close()
 
     logger.info(f'\nNumber of IPs released: {ips_released}')
     logger.info(f'Number of remaining IPs: {len(ips_list)}')

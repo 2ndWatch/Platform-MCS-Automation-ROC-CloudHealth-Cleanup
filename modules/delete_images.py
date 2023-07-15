@@ -60,6 +60,7 @@ def delete_snapshot(ec2_client, snapshot_id, dry_run, logger):
 def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
     resource_ids_file_name = f'{client_name} {resource_name}.txt'
     deleted_ids_file_name = f'{client_name} {resource_name} deleted.txt'
+    error_ids_file_name = f'{client_name} {resource_name} errors.txt'
     image_snaps_file_name = f'{client_name} {resource_name} snaps.txt'
     images_deregistered = 0
     snapshots_deleted = 0
@@ -97,14 +98,19 @@ def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, 
             logger.info(f'         {len(image_snaps)} snapshots for {image_id}: {image_snaps}')
     if images_to_deregister:
         logger.info(f'\nDeregistering {len(images_to_deregister)} images...')
-        file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
+        del_file = open(f'{client_name}_{run_date_time}/{deleted_ids_file_name}', 'a')
+        err_file = open(f'{client_name}_{run_date_time}/{error_ids_file_name}', 'a')
+        errors_list = [line.strip() for line in err_file]
         for image_id in images_to_deregister:
-            deregistered = deregister_image(ec2_client, image_id, dry_run, logger)
-            if deregistered:
-                images_deregistered += 1
-                file.write(image_id + '\n')
-                image_ids.remove(image_id)
-        file.close()
+            if image_id not in errors_list:
+                if deregister_image(ec2_client, image_id, dry_run, logger):
+                    images_deregistered += 1
+                    del_file.write(image_id + '\n')
+                    image_ids.remove(image_id)
+                else:
+                    err_file.write(image_id + '\n')
+        del_file.close()
+        err_file.close()
 
     logger.info(f'\nNumber of images deregistered: {images_deregistered}')
     logger.info(f'Number of remaining images: {len(image_ids)}')
