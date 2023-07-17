@@ -36,7 +36,6 @@ def delete_resources(profile, client_name, region_name, session, resource_keys, 
     snapshots = 0
     volumes = 0
     rds_snaps = 0
-    unauthorized = []
 
     for key in resource_keys:
         resource_name = resources_dict[key]
@@ -44,93 +43,43 @@ def delete_resources(profile, client_name, region_name, session, resource_keys, 
         if key == '1':
             logger.info('\nOld EC2 Image:'
                         '\n-------------')
-            try:
-                image_count, snapshot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
-                                                               run_date_time, logger)
-                images += image_count
-                snapshots += snapshot_count
-            except ClientError as e:
-                if 'UnauthorizedOperation' in str(e):
-                    logger.warning(f'   The describe_images or describe_snapshots API call is not authorized in '
-                                   f'account {account_number} in the {region_name} region.')
-                    unauthorized.append(['old images', account_number, region_name])
-                else:
-                    logger.warning(e)
+            image_count, snapshot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
+                                                           run_date_time, logger)
+            images += image_count
+            snapshots += snapshot_count
         if key == '2':
             logger.info('\nEC2 Image Not Associated:'
                         '\n------------------------')
-            try:
-                image_count, snapshot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
-                                                               run_date_time, logger)
-                images += image_count
-                snapshots += snapshot_count
-            except ClientError as e:
-                if 'UnauthorizedOperation' in str(e):
-                    logger.warning(f'   The describe_images or describe_snapshots API call is not authorized in '
-                                   f'account {account_number} in the {region_name} region.')
-                    unauthorized.append(['unused images', account_number, region_name])
-                else:
-                    logger.warning(e)
+            image_count, snapshot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
+                                                           run_date_time, logger)
+            images += image_count
+            snapshots += snapshot_count
         if key == '3':
             logger.info('\nEC2 Old Snapshots:'
                         '\n-----------------')
-            try:
-                snapshot_count = des.delete_snapshots(ec2, client_name, region_name, resource_name, dry_run,
-                                                      run_date_time, logger)
-                snapshots += snapshot_count
-            except ClientError as e:
-                if 'UnauthorizedOperation' in str(e):
-                    logger.warning(
-                        f'   The describe_snapshots API call is not authorized in account {account_number} in '
-                        f'the {region_name} region.')
-                    unauthorized.append(['old EBS snaps', account_number, region_name])
-                else:
-                    logger.warning(e)
+            snapshot_count = des.delete_snapshots(ec2, client_name, region_name, resource_name, dry_run,
+                                                  run_date_time, logger)
+            snapshots += snapshot_count
         if key == '4':
             logger.info('\nUnattached Elastic IPs:'
                         '\n----------------------')
-            try:
-                ip_count = ri.release_ips(ec2, client_name, region_name, resource_name, dry_run,
-                                          run_date_time, logger)
-                ips += ip_count
-            except ClientError as e:
-                if 'UnauthorizedOperation' in str(e):
-                    logger.warning(
-                        f'   The describe_addresses API call is not authorized in account {account_number} in '
-                        f'the {region_name} region.')
-                    unauthorized.append(['elastic IPs', account_number, region_name])
-                else:
-                    logger.warning(e)
+            ip_count = ri.release_ips(ec2, client_name, region_name, resource_name, dry_run,
+                                      run_date_time, logger)
+            ips += ip_count
         if key == '5':
             logger.info('\nUnattached EBS Volumes:'
                         '\n----------------------')
-            try:
-                volume_count = dv.delete_volumes(ec2, client_name, region_name, resource_name, dry_run,
-                                                 run_date_time, logger)
-                volumes += volume_count
-            except ClientError as e:
-                if 'UnauthorizedOperation' in str(e):
-                    logger.warning(f'   The describe_volumes API call is not authorized in account {account_number} in '
-                                   f'the {region_name} region.')
-                    unauthorized.append(['unatt volumes', account_number, region_name])
-                else:
-                    logger.warning(e)
+            volume_count = dv.delete_volumes(ec2, client_name, region_name, resource_name, dry_run,
+                                             run_date_time, logger)
+            volumes += volume_count
         if key == '6':
             logger.info('\nRDS Old Snapshots:'
                         '\n-----------------')
-            try:
-                rds_count = drs.delete_snapshots(rds, client_name, region_name, resource_name, dry_run,
-                                                 run_date_time, logger)
-                rds_snaps += rds_count
-            except ClientError as e:
-                if 'AccessDenied' in str(e):
-                    logger.warning(
-                        f'   The describe_db_snapshots or describe_cluster_snapshots API call is not authorized in '
-                        f'account {account_number} in the {region_name} region.')
-                    unauthorized.append(['RDS snaps', account_number, region_name])
-                else:
-                    logger.warning(e)
-    return ips, images, snapshots, volumes, rds_snaps, unauthorized
+            rds_count = drs.delete_snapshots(rds, client_name, region_name, resource_name, dry_run,
+                                             run_date_time, logger)
+            rds_snaps += rds_count
+
+    return ips, images, snapshots, volumes, rds_snaps
 
 
 def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dry_run, run_date_time, logger):
@@ -138,7 +87,6 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
     accounts_not_logged_in_list = []
     clients_logged_in = 0
     clients_not_logged_in_list = []
-    unauthorized_list = []
 
     ips = 0
     images = 0
@@ -188,17 +136,16 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
                     # create a boto3 session
                     session = create_boto3_session(profile, login, start_url, sso_region, role_name, region)
 
-                    ips_region, images_region, snapshots_region, volumes_region, rds_region, \
-                        unauthorized = delete_resources(profile, client_name, region, session, resource_keys,
-                                                        resources_dict, dry_run, run_date_time, logger)
+                    ips_region, images_region, snapshots_region, \
+                        volumes_region, rds_region = delete_resources(profile, client_name, region, session,
+                                                                      resource_keys, resources_dict, dry_run,
+                                                                      run_date_time, logger)
                     ips += ips_region
                     images += images_region
                     snapshots += snapshots_region
                     volumes += volumes_region
                     rds_snaps += rds_region
 
-                    for item in unauthorized:
-                        unauthorized_list.append(item)
             else:
                 if login == 'sso':
                     logger.info(f'You were not logged in, skipping {client_name}.')
@@ -216,5 +163,5 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
         # Return if no accounts were accessed
         return 1
     else:
-        return accounts_not_logged_in_list, clients_not_logged_in_list, unauthorized_list, ips, images, snapshots, \
+        return accounts_not_logged_in_list, clients_not_logged_in_list, ips, images, snapshots, \
             volumes, rds_snaps

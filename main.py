@@ -137,7 +137,7 @@ def main(clients):
             logger.info(f'\nExiting application.')
             sys.exit(0)
 
-        process_result, clients_not_logged_in, unauthorized, ips, images, \
+        process_result, clients_not_logged_in, ips, images, \
             snapshots, volumes, rds_snaps, = pc.process_clients(clients_dict, client_keys, resource_keys,
                                                                 resources_dict, dry_run, run_date_time, logger)
 
@@ -152,7 +152,6 @@ def main(clients):
                       'Resource Deletion Result', ok_button='Exit')
         else:
 
-            # TODO: summary of accounts logged in/unauthorized
             # At least one login was successful; displays any logins that did not succeed
             logger.info(f'\n{end_msg}'
                         f'\n\nSummary:'
@@ -162,6 +161,7 @@ def main(clients):
                         f'\nVolumes deleted: {volumes}'
                         f'\nRDS snapshots deleted: {rds_snaps}'
                         f'\n\nAccounts not logged into: {process_result}'
+                        f'\n\nClients not logged into: {clients_not_logged_in}'
                         f'\n\nClient directories for this run are appended with {run_date_time}.'
                         f'\n\nThe log file can be found in the <log> directory.')
 
@@ -173,6 +173,7 @@ def main(clients):
                       f'\nVolumes deleted: {volumes}'
                       f'\nRDS snapshots deleted: {rds_snaps}'
                       f'\n\nAccounts not logged into: {process_result}'
+                      f'\n\nClients not logged into: {clients_not_logged_in}'
                       f'\n\nClient directories for this run are appended with {run_date_time}.'
                       f'\n\nThe log file can be found in the <log> directory.'
                       f'\n\nClick the <Exit> button to exit the program.',
