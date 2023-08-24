@@ -3,14 +3,24 @@ import os
 import shutil
 
 
-def get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name, run_date_time, logger):
+def get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name,
+                        run_date_time, three_months_date, logger):
     error_msg = f'      The image id {image_id} does not exist in this region or account.'
     logger.info(f'   Searching for {image_id}...')
     try:
         response = ec2_client.describe_images(ImageIds=[image_id])
         snapshot_ids = []
+        snaps_to_confirm = []
+        confirm_image = False
         if response['Images']:
+            image_date = response['Images']['CreationDate'][:10]
             logger.info('      Image found. Getting snapshots...')
+
+            # Check if image is less than three months old
+            if image_date > three_months_date:
+                logger.info('         Image is less than three months old and needs confirmation.')
+                confirm_image = True
+
             for block_device in response['Images'][0]['BlockDeviceMappings']:
                 if 'Ebs' in block_device:
                     snapshot_id = block_device['Ebs']['SnapshotId']
@@ -19,7 +29,7 @@ def get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name
                 with open(f'{client_name}_{run_date_time}/{image_snaps_file_name}', 'a') as file:
                     for snapshot_id in snapshot_ids:
                         file.write(snapshot_id + '\n')
-            return snapshot_ids
+            return snapshot_ids, confirm_image
         else:
             logger.info(error_msg)
     except botocore.exceptions.ClientError as e:
@@ -57,19 +67,13 @@ def delete_snapshot(ec2_client, snapshot_id, dry_run, logger):
     return deleted
 
 
-def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, logger):
+def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, run_date_time, three_months, logger):
     resource_ids_file_name = f'{client_name} {resource_name}.txt'
     deleted_ids_file_name = f'{client_name} {resource_name} deleted.txt'
     error_ids_file_name = f'{client_name} {resource_name} errors.txt'
     image_snaps_file_name = f'{client_name} {resource_name} snaps.txt'
     images_deregistered = 0
     snapshots_deleted = 0
-
-    # Copy the resource ids file if a copy doesn't already exist
-    file_copy_path = f'{client_name}_{run_date_time}/Copy of {resource_ids_file_name}'
-    if not os.path.isfile(file_copy_path):
-        shutil.copy(f'{client_name}_{run_date_time}/{resource_ids_file_name}', file_copy_path)
-        logger.info('Initial copy of resource ID file was successful.')
 
     # Delete image snapshot file if it exists, to avoid trying to delete snapshots in every region/account
     try:
@@ -79,6 +83,12 @@ def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, 
 
     # Read image IDs from file
     try:
+        # Copy the resource ids file if a copy doesn't already exist
+        file_copy_path = f'{client_name}_{run_date_time}/INPUT {resource_ids_file_name}'
+        if not os.path.isfile(file_copy_path):
+            shutil.copy(f'{client_name}_{run_date_time}/{resource_ids_file_name}', file_copy_path)
+            logger.info('Initial copy of resource ID file was successful.')
+        # Read the resource file into a list
         with open(f'{client_name}_{run_date_time}/{resource_ids_file_name}', 'r') as file:
             image_ids = [line.strip() for line in file]
             logger.info(f'Locating {len(image_ids)} images...')
@@ -88,12 +98,30 @@ def delete_images(ec2_client, client_name, region_name, resource_name, dry_run, 
 
     original_image_ids_length = len(image_ids)
     images_to_deregister = []
+    images_to_confirm = []
+
+    # TODO: new logic
+    # for each image id:
+    #     send id to api function
+    #         return found boolean, confirm boolean & snapshot ids list
+    #     if not found:
+    #         add to not_processed list
+    #     else:
+    #         if confirm:
+    #             add to confirm list
+    #             add snaps to confirm_snaps list
+    #         else:
+    #             add to delete list
+    #             add snaps to delete_snaps list
+    #
 
     # Search for each image ID. If it exists, add its EBS snapshot IDs to a list, and deregister the image
     for image_id in image_ids:
-        image_snaps = get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name,
-                                          run_date_time, logger)
-        if image_snaps:
+        image_snaps, confirm_image = get_image_snapshots(ec2_client, client_name, image_id, image_snaps_file_name,
+                                          run_date_time, three_months, logger)
+        if confirm_image:
+            images_to_confirm.append(image_id)
+        elif image_snaps and not confirm_image:
             images_to_deregister.append(image_id)
             logger.info(f'         {len(image_snaps)} snapshots for {image_id}: {image_snaps}')
     if images_to_deregister:

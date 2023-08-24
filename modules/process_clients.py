@@ -20,8 +20,8 @@ def create_boto3_session(profile, login, start_url, sso_region, role_name, regio
     return session
 
 
-def delete_resources(profile, client_name, region_name, session, resource_keys, resources_dict, dry_run, run_date_time,
-                     logger):
+def delete_resources(profile, client_name, region_name, session, resource_keys, resources_dict,
+                     dry_run, run_date_time, three_months, logger):
     account_name = profile['account_name']
     account_number = profile['account_number']
 
@@ -44,14 +44,14 @@ def delete_resources(profile, client_name, region_name, session, resource_keys, 
             logger.info('\nOld EC2 Image:'
                         '\n-------------')
             image_count, snapshot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
-                                                           run_date_time, logger)
+                                                           run_date_time, three_months, logger)
             images += image_count
             snapshots += snapshot_count
         if key == '2':
             logger.info('\nEC2 Image Not Associated:'
                         '\n------------------------')
             image_count, snapshot_count = di.delete_images(ec2, client_name, region_name, resource_name, dry_run,
-                                                           run_date_time, logger)
+                                                           run_date_time, three_months, logger)
             images += image_count
             snapshots += snapshot_count
         if key == '3':
@@ -82,7 +82,8 @@ def delete_resources(profile, client_name, region_name, session, resource_keys, 
     return ips, images, snapshots, volumes, rds_snaps
 
 
-def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dry_run, run_date_time, logger):
+def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dry_run,
+                    run_date_time, three_months, logger):
     accounts_logged_in = 0
     accounts_not_logged_in_list = []
     clients_logged_in = 0
@@ -139,7 +140,7 @@ def process_clients(clients_dict, client_keys, resource_keys, resources_dict, dr
                     ips_region, images_region, snapshots_region, \
                         volumes_region, rds_region = delete_resources(profile, client_name, region, session,
                                                                       resource_keys, resources_dict, dry_run,
-                                                                      run_date_time, logger)
+                                                                      run_date_time, three_months, logger)
                     ips += ips_region
                     images += images_region
                     snapshots += snapshots_region

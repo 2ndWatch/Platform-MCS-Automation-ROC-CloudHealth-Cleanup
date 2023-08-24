@@ -1,6 +1,6 @@
 import modules.process_clients as pc
 from src.banner import banner
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import sys
 import logging
@@ -20,6 +20,15 @@ logger.addHandler(console)
 with open('src/clients.json') as cl:
     cl_txt = cl.read()
 clients_dict = json.loads(cl_txt)
+
+
+# Subtract 90 days from a given date
+def convert_date(date_string):
+    dt_date = datetime.strptime(date_string, '%Y-%m-%d')
+    three_months = timedelta(days=90)
+    three_month_dt_date = dt_date - three_months
+    three_month_date = datetime.strftime(three_month_dt_date, '%Y-%m-%d')
+    return three_month_date
 
 
 def parse_selection(choices):
@@ -54,6 +63,10 @@ def main(clients):
     if welcome is None:  # User closed msgbox
         logger.info(f'\nExiting application.')
         sys.exit(0)
+
+    # Get today's date and transform to three-month date
+    today = datetime.now().strftime('%Y-%m-%d')
+    three_months = convert_date(today)
 
     # Create a list of clients from which to select
     client_choices = []
@@ -139,9 +152,11 @@ def main(clients):
 
         process_result, clients_not_logged_in, ips, images, \
             snapshots, volumes, rds_snaps, = pc.process_clients(clients_dict, client_keys, resource_keys,
-                                                                resources_dict, dry_run, run_date_time, logger)
+                                                                resources_dict, dry_run, run_date_time,
+                                                                three_months, logger)
 
         if process_result == 1:
+
 
             # No logins were successful
             logger.info('\nNo successful logins recorded. No resources were deleted.')
